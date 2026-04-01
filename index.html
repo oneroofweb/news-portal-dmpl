@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Modern News Portal</title>
+    <meta name="description" content="ताज़ा ख़बरें और अपडेट्स">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<!--========================================================================== 
+       SECTION 1: Navbar Section
+    ==========================================================================-->
+<div class="topbar-custom bg-white d-flex justify-content-between align-items-center px-3 px-lg-5 py-2 border-bottom" style="border-top: 3px solid var(--brand-red);">
+            
+            <div class="d-flex align-items-center">
+                <button class="btn btn-link text-dark p-0 me-3 menu-toggle shadow-none d-flex align-items-center text-decoration-none" aria-label="Menu" style="font-size: 1.7rem;">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a href="index.html" class="text-decoration-none">
+                    <h1 class="m-0 fw-bold text-dark" style="font-size: 2.2rem; letter-spacing: -1px;">DMPL</h1>
+                </a>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <a href="#" class="text-decoration-none text-dark d-flex align-items-center" title="शहर बदलें" data-bs-toggle="modal" data-bs-target="#cityModal">
+    <span class="me-1 fw-medium d-none d-sm-block" style="font-size: 1.05rem;" id="user-current-city">मेरा शहर</span>
+    <i class="bi bi-geo-alt text-secondary" style="font-size: 1.3rem; stroke-width: 0.5px;"></i>
+</a>
+
+<!-- ============== City Selection View ============ -->
+ <div class="modal fade" id="cityModal" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"> 
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+                
+                <div class="modal-header border-0 pb-0 justify-content-center position-relative">
+                    <button type="button" class="btn-close position-absolute end-0 me-3 shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center mt-2">
+                        <div class="fw-bold fs-5 mb-1" style="color: var(--brand-red);">
+                            <i class="fas fa-map-marker-alt"></i> अपना शहर चुनें
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-body pt-3 pb-4">
+                    <div class="position-relative mb-4">
+                        <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                        <input type="text" id="citySearchInput" class="form-control form-control-lg rounded-pill ps-5 shadow-none" placeholder="शहर खोजें..." style="border: 1px solid #ccc; font-size: 1rem;">
+                    </div>
+
+                    <div>
+                        <div id="popularSection">
+                            <p class="text-muted small fw-bold text-uppercase mb-2">लोकप्रिय शहर</p>
+                            <div class="row g-2 mb-4">
+                                <div class="col-4">
+                                    <button type="button" onclick="selectCity('लखनऊ')" class="btn w-100 popular-city-btn">
+                                        <i class="fa-solid fa-tree-city mb-1"></i><span class="d-block small fw-bold">लखनऊ</span>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button type="button" onclick="selectCity('कानपुर')" class="btn w-100 popular-city-btn">
+                                        <i class="fa-solid fa-city mb-1"></i><span class="d-block small fw-bold">कानपुर</span>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button type="button" onclick="selectCity('नई दिल्ली')" class="btn w-100 popular-city-btn">
+                                        <i class="fa-solid fa-building mb-1"></i><span class="d-block small fw-bold">दिल्ली</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-muted small fw-bold text-uppercase mb-2">सभी शहर</p>
+                        <div class="row g-2" id="allCitiesList">
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('आगरा')" class="list-city-btn" data-en="agra">आगरा</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('अहमदाबाद')" class="list-city-btn" data-en="ahmedabad">अहमदाबाद</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('अयोध्या')" class="list-city-btn" data-en="ayodhya">अयोध्या</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('बेंगलुरु')" class="list-city-btn" data-en="bangalore bengaluru">बेंगलुरु</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('चंडीगढ़')" class="list-city-btn" data-en="chandigarh">चंडीगढ़</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('चेन्नई')" class="list-city-btn" data-en="chennai">चेन्नई</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('नई दिल्ली')" class="list-city-btn" data-en="new delhi">नई दिल्ली</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('हैदराबाद')" class="list-city-btn" data-en="hyderabad">हैदराबाद</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('जयपुर')" class="list-city-btn" data-en="jaipur">जयपुर</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('कानपुर')" class="list-city-btn" data-en="kanpur">कानपुर</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('कोलकाता')" class="list-city-btn" data-en="kolkata">कोलकाता</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('लखनऊ')" class="list-city-btn" data-en="lucknow">लखनऊ</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('मुंबई')" class="list-city-btn" data-en="mumbai">मुंबई</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('पुणे')" class="list-city-btn" data-en="pune">पुणे</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('वाराणसी')" class="list-city-btn" data-en="varanasi banaras">वाराणसी</button></div>
+                            
+                            <div class="col-12 text-center text-muted mt-3" id="noCityFound" style="display: none;">
+                                <i class="fa-regular fa-face-frown fs-1 mb-2"></i>
+                                <p>माफ़ करें, यह शहर नहीं मिला।</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============= Search Section ============ -->
+                
+                <div class="vr mx-2 mx-md-3 text-secondary" style="width: 1.5px; opacity: 0.4; height: 26px;"></div>
+                
+                <button class="btn btn-link text-dark p-0 shadow-none d-flex align-items-center text-decoration-none" aria-label="Search" style="font-size: 1.3rem;" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="bi bi-search text-secondary"></i>
+            </button>
+            </div>
+            
+        </div>
+
+        <!-- ============ Search Model View =========== -->
+         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"> <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
+                
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-dark" id="searchModalLabel">क्या खोजना चाहते हैं?</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body pt-3 pb-4">
+                    <form class="d-flex w-100">
+                        <input type="search" id="modalSearchInput" class="form-control form-control-lg me-2 shadow-none" placeholder="यहाँ टाइप करें..." style="border: 1px solid #ccc; font-size: 1.1rem;">
+                        <button type="submit" class="btn btn-danger px-4 fw-medium" style="font-size: 1.1rem;">खोजें</button>
+                    </form>
+                </div>
+
+                <div class="modal-footer border-0 pt-0 justify-content-start">
+                    <span class="text-muted small me-2">ट्रेंडिंग:</span>
+                    <a href="#" class="badge bg-light text-dark text-decoration-none border me-1">चुनाव 2026</a>
+                    <a href="#" class="badge bg-light text-dark text-decoration-none border me-1">शेयर बाजार</a>
+                    <a href="#" class="badge bg-light text-dark text-decoration-none border">मौसम</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- ============== Menu Bar Section =============== -->
+
+    <nav class="primary-nav-menu" id="primary-nav">
+            <div class="container-fluid px-2 px-lg-5 d-flex align-items-center justify-content-between h-100">
+                
+                <div class="nav-menu-links d-flex align-items-center overflow-auto custom-scrollbar flex-grow-1">
+                    
+                    <a href="#" class="nav-item nav-link"><i class="fas fa-home"></i></a>
+                    
+                    <a href="#" class="nav-item nav-link text-nowrap">मेरी फ़ीड</a>
+                    
+                    <a href="#" class="nav-item nav-link text-nowrap active">मनोरंजन</a>
+                    
+                    <a href="#" class="nav-item nav-link text-nowrap">देश</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">क्रिकेट</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">वायरल</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">वेब स्टोरीज</a>
+                    
+                    <div class="nav-item dropdown d-flex align-items-center h-100">
+                        <a href="#" class="nav-link text-nowrap dropdown-toggle" data-bs-toggle="dropdown" data-bs-boundary="window" style="border-bottom: none;">राज्य</a>
+                        <ul class="dropdown-menu shadow border-0 mt-0">
+                            <li><a class="dropdown-item" href="#">उत्तर प्रदेश</a></li>
+                            <li><a class="dropdown-item" href="#">मध्य प्रदेश</a></li>
+                            <li><a class="dropdown-item" href="#">बिहार</a></li>
+                            <li><a class="dropdown-item" href="#">उत्तराखंड</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="#" class="nav-item nav-link text-nowrap">बिजनेस</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">करियर</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">टेक-ऑटो</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">दुनिया</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">धर्म</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">लाइफस्टाइल</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">फोटो</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">वीडियो</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">पॉडकास्ट</a>
+                </div>
+                
+            </div>
+        </nav>
+
+<!--========================================================================== 
+       SECTION 2: Top News / Hero Section Styles
+    ==========================================================================-->
+
+  <section>
+        <div class="container mt-3">
+            <div class="row">
+                <!--======== Right Content ====== -->
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <div class="row flex-column">
+                
+                <div class="col-lg-12 mb-4 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-story-card">
+                        <div class="position-relative mb-3 overflow-hidden rounded shadow-sm img-wrapper-large">
+                            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Main Story" class="img-fluid w-100 main-img" loading="lazy">
+                            <span class="position-absolute top-0 start-0 bg-danger text-white px-3 py-1 m-3 fw-bold rounded badge-breaking">BREAKING</span>
+                        </div>
+                        
+                        <h2 class="fw-bold mb-2 line-clamp-2 text-dark main-title pt-2">
+                            संसद में हंगामा: विपक्ष का वॉकआउट, स्पीकर ने दिए सख्त निर्देश, जानें आज क्या-क्या हुआ
+                        </h2>
+                        <p class="text-muted line-clamp-3 mb-2 main-desc">
+                            मानसून सत्र के दौरान आज संसद के दोनों सदनों में भारी हंगामा देखने को मिला। विपक्षी दलों ने महंगाई और बेरोजगारी के मुद्दे पर सरकार को घेरा। स्पीकर ने हंगामा कर रहे सांसदों को कड़ी चेतावनी दी है...
+                        </p>
+                        <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                    </a>
+                </div>
+
+                <div class="col-lg-11 mt-lg-5">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+    
+
+
+    <!--========================================================================
+       SECTION 3: Entertainment (1 Big + 4 Small Grid) Styles
+    ==========================================================================-->
+
+        <section class="entertainment-section my-4 my-lg-5" id="entertainment-section">
+            <div class="container">
+            
+            <div class="row mb-3 flex-">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                        <h4 class="fw-bold m-0 d-flex align-items-center">
+                            <span class="text-purple me-2"><i class="fas fa-film"></i></span> मनोरंजन
+                        </h4>
+                        <a href="#" class="text-decoration-none text-purple fw-medium" style="font-size: 0.95rem;">
+                            सभी देखें <i class="fas fa-angle-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 g-lg-4 flex-column">
+                
+                <div class="col-lg-12 mb-3 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-ent-card h-100">
+                        <div class="img-wrapper-ent-large rounded overflow-hidden shadow-sm mb-3 position-relative">
+                            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Main Entertainment Story" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                        </div>
+                        <h3 class="fw-bold mb-2 line-clamp-2 title-hover-purple pt-1">
+                            राहुल अरुणोदय बनर्जी के निधन पर पुलिस ने दी बड़ी अपडेट, बिना इजाजत अभिनेता कर रहे थे यह काम
+                        </h3>
+                        <div class="d-flex align-items-center text-secondary small fw-medium mt-2">
+                            <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row g-3">
+                        
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+    <!--========================================================================
+       SECTION 3: Desh (1 Big + 4 Small Grid) Styles
+    ==========================================================================-->
+
+        <section class="entertainment-section my-4 my-lg-5" id="entertainment-section">
+            <div class="container">
+            
+            <div class="row mb-3 flex-">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                        <h4 class="fw-bold m-0 d-flex align-items-center">
+                            <span class="text-purple me-2"><i class="fa-regular fa-flag"></i></span> देश
+                        </h4>
+                        <a href="#" class="text-decoration-none text-purple fw-medium" style="font-size: 0.95rem;">
+                            सभी देखें <i class="fas fa-angle-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 g-lg-4 flex-column">
+                
+                <div class="col-lg-12 mb-3 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-ent-card h-100">
+                        <div class="img-wrapper-ent-large rounded overflow-hidden shadow-sm mb-3 position-relative">
+                            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Main Entertainment Story" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                        </div>
+                        <h3 class="fw-bold mb-2 line-clamp-2 title-hover-purple pt-1">
+                            राहुल अरुणोदय बनर्जी के निधन पर पुलिस ने दी बड़ी अपडेट, बिना इजाजत अभिनेता कर रहे थे यह काम
+                        </h3>
+                        <div class="d-flex align-items-center text-secondary small fw-medium mt-2">
+                            <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row g-3">
+                        
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+    <!--========================================================================
+       SECTION 4: Entertainment (1 Big + 4 Small Grid) Styles
+    ==========================================================================-->
+
+        <section class="entertainment-section my-4 my-lg-5" id="entertainment-section">
+            <div class="container">
+            
+            <div class="row mb-3 flex-">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                        <h4 class="fw-bold m-0 d-flex align-items-center">
+                            <span class="text-purple me-2"><i class="fa-solid fa-earth-africa"></i></span> दुनिया
+                        </h4>
+                        <a href="#" class="text-decoration-none text-purple fw-medium" style="font-size: 0.95rem;">
+                            सभी देखें <i class="fas fa-angle-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 g-lg-4 flex-column">
+                
+                <div class="col-lg-12 mb-3 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-ent-card h-100">
+                        <div class="img-wrapper-ent-large rounded overflow-hidden shadow-sm mb-3 position-relative">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Main Entertainment Story" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                        </div>
+                        <h3 class="fw-bold mb-2 line-clamp-2 title-hover-purple pt-1">
+                            राहुल अरुणोदय बनर्जी के निधन पर पुलिस ने दी बड़ी अपडेट, बिना इजाजत अभिनेता कर रहे थे यह काम
+                        </h3>
+                        <div class="d-flex align-items-center text-secondary small fw-medium mt-2">
+                            <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row g-3">
+                        
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+    <!--========================================================================
+       SECTION 4: Politics (1 Big + 4 Small Grid) Styles
+    ==========================================================================-->
+
+        <section class="entertainment-section my-4 my-lg-5" id="entertainment-section">
+            <div class="container">
+            
+            <div class="row mb-3 flex-">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                        <h4 class="fw-bold m-0 d-flex align-items-center">
+                            <span class="text-purple me-2"><i class="fa-solid fa-landmark-flag"></i></span> राजनीति
+                        </h4>
+                        <a href="#" class="text-decoration-none text-purple fw-medium" style="font-size: 0.95rem;">
+                            सभी देखें <i class="fas fa-angle-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 g-lg-4 flex-column">
+                
+                <div class="col-lg-12 mb-3 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-ent-card h-100">
+                        <div class="img-wrapper-ent-large rounded overflow-hidden shadow-sm mb-3 position-relative">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Main Entertainment Story" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                        </div>
+                        <h3 class="fw-bold mb-2 line-clamp-2 title-hover-purple pt-1">
+                            राहुल अरुणोदय बनर्जी के निधन पर पुलिस ने दी बड़ी अपडेट, बिना इजाजत अभिनेता कर रहे थे यह काम
+                        </h3>
+                        <div class="d-flex align-items-center text-secondary small fw-medium mt-2">
+                            <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row g-3">
+                        
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+    <!--========================================================================
+       SECTION 4: Business (1 Big + 4 Small Grid) Styles
+    ==========================================================================-->
+
+        <section class="entertainment-section my-4 my-lg-5" id="entertainment-section">
+            <div class="container">
+            
+            <div class="row mb-3 flex-">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                        <h4 class="fw-bold m-0 d-flex align-items-center">
+                            <span class="text-purple me-2"><i class="fa-solid fa-business-time"></i></span> बिज़नेस
+                        </h4>
+                        <a href="#" class="text-decoration-none text-purple fw-medium" style="font-size: 0.95rem;">
+                            सभी देखें <i class="fas fa-angle-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 g-lg-4 flex-column">
+                
+                <div class="col-lg-12 mb-3 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-ent-card h-100">
+                        <div class="img-wrapper-ent-large rounded overflow-hidden shadow-sm mb-3 position-relative">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Main Entertainment Story" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                        </div>
+                        <h3 class="fw-bold mb-2 line-clamp-2 title-hover-purple pt-1">
+                            राहुल अरुणोदय बनर्जी के निधन पर पुलिस ने दी बड़ी अपडेट, बिना इजाजत अभिनेता कर रहे थे यह काम
+                        </h3>
+                        <div class="d-flex align-items-center text-secondary small fw-medium mt-2">
+                            <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row g-3">
+                        
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+    <!--========================================================================
+       SECTION 4: Entertainment (1 Big + 4 Small Grid) Styles
+    ==========================================================================-->
+
+        <section class="entertainment-section my-4 my-lg-5" id="entertainment-section">
+            <div class="container">
+            
+            <div class="row mb-3 flex-">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                        <h4 class="fw-bold m-0 d-flex align-items-center">
+                            <span class="text-purple me-2"><i class="fa-solid fa-film"></i></span> मनोरंजन
+                        </h4>
+                        <a href="#" class="text-decoration-none text-purple fw-medium" style="font-size: 0.95rem;">
+                            सभी देखें <i class="fas fa-angle-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 g-lg-4 flex-column">
+                
+                <div class="col-lg-12 mb-3 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-ent-card h-100">
+                        <div class="img-wrapper-ent-large rounded overflow-hidden shadow-sm mb-3 position-relative">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Main Entertainment Story" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                        </div>
+                        <h3 class="fw-bold mb-2 line-clamp-2 title-hover-purple pt-1">
+                            राहुल अरुणोदय बनर्जी के निधन पर पुलिस ने दी बड़ी अपडेट, बिना इजाजत अभिनेता कर रहे थे यह काम
+                        </h3>
+                        <div class="d-flex align-items-center text-secondary small fw-medium mt-2">
+                            <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row g-3">
+                        
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+    <!--========================================================================
+       SECTION 4: Career (1 Big + 4 Small Grid) Styles
+    ==========================================================================-->
+
+        <section class="entertainment-section my-4 my-lg-5" id="entertainment-section">
+            <div class="container">
+            
+            <div class="row mb-3 flex-">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                        <h4 class="fw-bold m-0 d-flex align-items-center">
+                            <span class="text-purple me-2"><i class="fa-solid fa-briefcase"></i></span> करियर
+                        </h4>
+                        <a href="#" class="text-decoration-none text-purple fw-medium" style="font-size: 0.95rem;">
+                            सभी देखें <i class="fas fa-angle-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 g-lg-4 flex-column">
+                
+                <div class="col-lg-12 mb-3 mb-lg-0">
+                    <a href="#" class="text-decoration-none text-dark d-block main-ent-card h-100">
+                        <div class="img-wrapper-ent-large rounded overflow-hidden shadow-sm mb-3 position-relative">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Main Entertainment Story" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                        </div>
+                        <h3 class="fw-bold mb-2 line-clamp-2 title-hover-purple pt-1">
+                            राहुल अरुणोदय बनर्जी के निधन पर पुलिस ने दी बड़ी अपडेट, बिना इजाजत अभिनेता कर रहे थे यह काम
+                        </h3>
+                        <div class="d-flex align-items-center text-secondary small fw-medium mt-2">
+                            <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp; &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-11">
+                    <div class="row g-3">
+                        
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Chandrayaan-3: प्रज्ञान रोवर ने चांद की सतह पर खोजे नए खनिज, ISRO ने जारी की ताजा तस्वीरें
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Share Market: लगातार तीसरे दिन शेयर बाजार में उछाल, सेंसेक्स 65000 के पार, निवेशकों की चांदी
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start border-bottom pb-3 mb-3 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Asia Cup 2026: भारत-पाक महामुकाबले से पहले टीम इंडिया को लगा बड़ा झटका, स्टार खिलाड़ी हुआ बाहर
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                        <a href="#" class="text-decoration-none text-dark d-flex align-items-start pb-2 small-story-card">
+                            <div class="pe-3 flex-grow-1">
+                                <h6 class="fw-bold mb-2 line-clamp-3 small-title">
+                                    Weather Update: दिल्ली-NCR में झमाझम बारिश से मौसम हुआ सुहावना, कई राज्यों में भारी अलर्ट
+                                </h6>
+                                <small class="text-secondary"><i class="far fa-clock me-1"></i> 4 घंटे पहले</small>
+                                <small class="text-secondary"> &nbsp;<i class="fa-solid fa-table-cells-large me-1"></i> Business</small>
+                            </div>
+                            <div class="img-wrapper-small flex-shrink-0 rounded overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Story" loading="lazy">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+            </div>
+                </div>
+
+        
+
+
+                <!--===== Sidebar ===== -->
+
+                <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block pb-3">
+                    
+                    <aside class="sidebar-wrapper sticky-top" style="top: 80px; z-index: 1020;">
+                        
+                        <div class="bg-white p-3 rounded shadow-sm border mb-4">
+                            <h5 class="fw-bold border-bottom pb-2 mb-3">
+                                <span class="text-dark me-2"><i class="fas fa-share-alt"></i></span> हमसे जुड़ें
+                            </h5>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="social-btn facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-btn twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-btn youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="social-btn instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-btn whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3 rounded shadow-sm border mb-4 text-center">
+                            <span class="text-muted small d-block mb-2">- Advertisement -</span>
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 250px; width: 100%; border: 1px dashed #ccc;">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Ad" class="img-fluid w-100 h-100 object-fit-cover opacity-50">
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3 rounded shadow-sm border mb-4">
+                            <h5 class="fw-bold border-bottom pb-2 mb-3">
+                                <span class="text-danger me-2"><i class="fas fa-fire"></i></span> सबसे ज्यादा पढ़ी गई
+                            </h5>
+                            <div class="d-flex flex-column gap-3">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card">
+                                    <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Trending 1" loading="lazy">
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">नए स्मार्टफोन में आया धांसू फीचर, लोग हुए दीवाने</h6>
+                                        <small class="text-secondary"><i class="far fa-clock me-1"></i> 2 घंटे पहले</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card">
+                                    <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Trending 2" loading="lazy">
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">शेयर बाजार में आज फिर दिखा उतार-चढ़ाव, जानें हाल</h6>
+                                        <small class="text-secondary"><i class="far fa-clock me-1"></i> 5 घंटे पहले</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card">
+                                    <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" alt="Trending 3" loading="lazy">
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">वर्ल्ड कप के लिए टीम का हुआ ऐलान, इन दिग्गजों को जगह</h6>
+                                        <small class="text-secondary"><i class="far fa-clock me-1"></i> 8 घंटे पहले</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3 rounded shadow-sm border mb-4 text-center">
+                            <h5 class="fw-bold mb-2">न्यूज़लेटर</h5>
+                            <p class="text-muted small mb-3">ताज़ा ख़बरें सीधे अपने इनबॉक्स में पाएं।</p>
+                            <form>
+                                <div class="input-group mb-2">
+                                    <input type="email" class="form-control" placeholder="आपका ईमेल" required>
+                                </div>
+                                <button class="btn btn-danger w-100 fw-medium" type="button">सब्सक्राइब करें</button>
+                            </form>
+                        </div>
+
+                        <div class="bg-white p-3 rounded shadow-sm border mb-4">
+                            <h5 class="fw-bold border-bottom pb-2 mb-3">
+                                <span class="text-dark me-2"><i class="fas fa-tags"></i></span> लोकप्रिय टैग्स
+                            </h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="#" class="sidebar-tag">क्रिकेट</a>
+                                <a href="#" class="sidebar-tag">बॉलीवुड</a>
+                                <a href="#" class="sidebar-tag">राजनीति</a>
+                                <a href="#" class="sidebar-tag">शेयर बाजार</a>
+                                <a href="#" class="sidebar-tag">टेक्नोलॉजी</a>
+                                <a href="#" class="sidebar-tag">लाइफस्टाइल</a>
+                                <a href="#" class="sidebar-tag">मौसम</a>
+                            </div>
+                        </div>
+                        
+                    </aside>
+                </div>
+                
+                </div>
+            </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+/* ==========================================================================
+   Global Variables & Base Styles
+   ========================================================================== */
+:root {
+    /* Colors */
+    --brand-red: #e31e25;
+    --brand-red-hover: #c8191f;
+    --brand-dark: #363b3f;
+    --brand-maroon: #3b0000;
+    
+    /* Backgrounds */
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    
+    /* Text Colors */
+    --text-main: #222222;
+    --text-muted: #6c757d;
+    
+    /* Borders */
+    --border-color: #eaeaea;
+    --border-nav: #4a4f54;
+
+    /* Typography */
+    --font-hindi: 'Noto Sans Devanagari', sans-serif;
+    --font-eng: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-hindi);
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--brand-red);
+}
+
+/* ==========================================================================
+   NEW HEADER NAVIGATION MENU STYLES
+   ========================================================================== */
+
+.primary-nav-menu {
+    height: 48px; /* Standard height for news navbar */
+    background-color: #1a1a1a; /* Dark background matching the image */
+    position: relative;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+/* Scrollable Links Container */
+.nav-menu-links {
+    height: 100%;
+}
+
+.nav-menu-links .nav-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #e0e0e0 !important; /* Light grey text */
+    border-bottom: 3px solid transparent; /* Transparent border for smooth hover */
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+/* Hover & Active State (Red Bottom Border & White Text) */
+.nav-menu-links .nav-link:hover,
+.nav-menu-links .nav-link.active {
+    color: #ffffff !important;
+    border-bottom: 3px solid var(--brand-red); /* Amar Ujala Red */
+}
+
+/* Specific styling for the Home Icon */
+.nav-menu-links .fa-home {
+    font-size: 1.1rem;
+}
+
+/* Right Side Icons */
+.nav-action-icons {
+    height: 100%;
+}
+
+.nav-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #e0e0e0;
+    transition: color 0.2s ease;
+}
+
+.nav-icon-btn:hover {
+    color: #ffffff;
+}
+
+/* Dropdown fixes inside flex navbar */
+.primary-nav-menu .dropdown-menu {
+    background-color: #1a1a1a;
+    border-radius: 0 0 8px 8px;
+}
+.primary-nav-menu .dropdown-item {
+    color: #e0e0e0;
+    font-size: 14px;
+    padding: 8px 20px;
+}
+.primary-nav-menu .dropdown-item:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* Horizontal Scrollbar hide utility (if not already added) */
+.custom-scrollbar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; 
+}
+.custom-scrollbar::-webkit-scrollbar {
+    display: none; 
+}
+
+/* =========================================
+   CUSTOM STICKY NAVBAR CLASSES
+   ========================================= */
+.is-sticky {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1040;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* हल्का शैडो */
+    animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Dropdown Ko Scroll Ke bahar Dikhane Ke liye */
+.primary-nav-menu .dropdown-menu {
+    position: fixed !important;
+}
+
+/* =========================================
+   CITY SELECTION MODAL STYLES
+   ========================================= */
+#citySearchInput:focus {
+  border-color: var(--brand-red) !important;
+  box-shadow: 0 0 0 0.25rem rgba(227, 30, 37, 0.1) !important;
+}
+
+.popular-city-btn {
+  background: #fff;
+  border: 2px solid #eef0f2;
+  border-radius: 12px;
+  padding: 12px 5px;
+  color: #444;
+  transition: all 0.2s ease;
+}
+.popular-city-btn i {
+  color: var(--brand-red);
+  font-size: 1.5rem;
+}
+.popular-city-btn:hover {
+  border-color: var(--brand-red);
+  background: #fffafa;
+  color: var(--brand-red);
+}
+
+.list-city-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  color: #333;
+  transition: all 0.2s;
+}
+.list-city-btn:hover {
+  background: var(--brand-red);
+  color: #fff;
+  border-color: var(--brand-red);
+}
+
+/* ==========================================================================
+   SECTION 2: Top News / Hero Section Styles
+   ========================================================================== */
+
+/* Image Containers & Sizing */
+.img-wrapper-large {
+    height: 380px;
+}
+.img-wrapper-large .main-img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.img-wrapper-small {
+    width: 130px;
+    height: 85px;
+}
+.img-wrapper-small img {
+    transition: transform 0.4s ease;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Hover Effects (Zoom Image & Color Text Red) */
+.main-story-card:hover .main-img,
+.small-story-card:hover img {
+    transform: scale(1.06);
+}
+
+.main-story-card .main-title,
+.small-story-card .small-title {
+    transition: color 0.2s ease;
+}
+
+.main-story-card:hover .main-title,
+.small-story-card:hover .small-title {
+    color: var(--brand-red) !important;
+}
+
+/* Badge styling */
+.badge-breaking {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* Responsive Adjustments for Hero Section */
+@media (max-width: 991.98px) {
+    .img-wrapper-large { height: 280px; }
+    .main-story-card .main-title { font-size: 1.6rem; }
+    .main-story-card .main-desc { font-size: 1rem; }
+}
+
+@media (max-width: 767.98px) {
+    .img-wrapper-small {
+        width: 100px;
+        height: 75px;
+    }
+    .small-story-card .small-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .img-wrapper-large { height: 220px; }
+    .main-story-card .main-title { font-size: 1.4rem; }
+}
+
+/* ==========================================================================
+   SECTION 3: Entertainment (1 Big + 4 Small Grid) Styles
+   ========================================================================== */
+
+/* Custom Purple Theme for Entertainment */
+.text-purple {
+    color: #6a1b9a !important; /* Deep Purple */
+}
+
+.title-hover-purple {
+    transition: color 0.2s ease;
+}
+
+/* Hover Effects (Text Color & Image Zoom) */
+.main-ent-card:hover .title-hover-purple,
+.small-ent-card:hover .title-hover-purple {
+    color: #6a1b9a !important;
+}
+
+.main-ent-card img, 
+.small-ent-card img {
+    transition: transform 0.4s ease;
+}
+
+.main-ent-card:hover img, 
+.small-ent-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Image Heights (Desktop) */
+.img-wrapper-ent-large {
+    height: 350px;
+}
+.img-wrapper-ent-small {
+    height: 160px;
+}
+
+/* Responsive Adjustments for Tablets and Mobile */
+@media (max-width: 991.98px) {
+    .img-wrapper-ent-large { 
+        height: 280px; 
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Mobile Par Main Image ki height thodi kam */
+    .img-wrapper-ent-large { 
+        height: 220px; 
+    }
+    
+    /* Mobile par 4 choti stories ki height aur text ka size */
+    .img-wrapper-ent-small { 
+        height: 110px; /* Perfect height for 50% width grid on mobile */
+    }
+    .small-ent-card h6 { 
+        font-size: 0.95rem; 
+        line-height: 1.4;
+    }
+}
+
+/* ==========================================================================
+   SIDEBAR WIDGETS STYLES
+   ========================================================================== */
+
+/* Sticky Sidebar Smoothness */
+.sidebar-wrapper {
+    transition: all 0.3s ease;
+}
+
+/* Social Media Buttons */
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    color: #fff !important;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.social-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.85;
+}
+.social-btn.facebook { background-color: #1877F2; }
+.social-btn.twitter { background-color: #1DA1F2; } /* Ya Black for X */
+.social-btn.youtube { background-color: #FF0000; }
+.social-btn.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.social-btn.whatsapp { background-color: #25D366; }
+
+/* Trending News Sidebar List */
+.sidebar-news-card img {
+    transition: transform 0.4s ease;
+}
+.sidebar-news-card:hover img {
+    transform: scale(1.1);
+}
+.sidebar-news-card:hover .title-hover-red {
+    color: var(--brand-red) !important;
+}
+
+/* Sidebar Tags */
+.sidebar-tag {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+.sidebar-tag:hover {
+    background-color: var(--brand-red);
+    color: #fff !important;
+    border-color: var(--brand-red);
+}
+
+/* Mobile Alignment for Sidebar */
+@media (max-width: 991.98px) {
+    .sidebar-wrapper {
+        margin-top: 20px;
+    }
+}
