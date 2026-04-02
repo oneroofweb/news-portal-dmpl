@@ -110,3 +110,22 @@ function selectCity(cityName) {
 }
 
 
+// ======================= CATEGORY PAGE - JS =======================
+
+// Load More Button Fake Loader (For UI Testing)
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+if(loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', function() {
+        let originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> लोड हो रहा है...';
+        this.classList.add('disabled');
+        
+        // 1.5 Second baad wapas normal karna
+        setTimeout(() => {
+            this.innerHTML = originalText;
+            this.classList.remove('disabled');
+        }, 1500);
+    });
+}
+
+

@@ -458,3 +458,45 @@ a:hover {
 .hover-danger:hover {
     color: var(--brand-red) !important;
 }
+
+/* ===============================================================================
+             ************ HOME PAGE CSS - END HERE ***************
+   =============================================================================== */
+
+
+/* ===============================================================================
+   CATEGORY LISTING PAGE STYLES
+   =============================================================================== */
+
+/* Category News Image Wrapper */
+.img-wrapper-cat {
+    width: 260px;
+    height: 160px;
+}
+.img-wrapper-cat img {
+    transition: transform 0.4s ease;
+}
+
+/* Hover Effects */
+.category-news-card:hover .img-wrapper-cat img {
+    transform: scale(1.08); /* Image Zoom */
+}
+
+.cat-title {
+    transition: color 0.2s ease;
+}
+
+.category-news-card:hover .cat-title {
+    color: var(--brand-red) !important; /* Title turns red on hover */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 767.98px) {
+    .img-wrapper-cat {
+        width: 100%;
+        height: 200px;
+    }
+    .cat-title {
+        font-size: 1.3rem;
+    }
+}

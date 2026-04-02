@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Modern News Portal</title>
+    <meta name="description" content="ताज़ा ख़बरें और अपडेट्स">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+
+
+<!--========================================================================== 
+       SECTION 1: Navbar Section
+    ==========================================================================-->
+<div class="topbar-custom bg-white d-flex justify-content-between align-items-center px-3 px-lg-5 py-2 border-bottom" style="border-top: 3px solid var(--brand-red);">
+            
+            <div class="d-flex align-items-center">
+                <button class="btn btn-link text-dark p-0 me-3 shadow-none d-flex align-items-center text-decoration-none" aria-label="Menu" style="font-size: 1.7rem;" data-bs-toggle="offcanvas" data-bs-target="#mainOffcanvas" aria-controls="mainOffcanvas">
+                <i class="fa fa-bars"></i>
+            </button>
+
+    <!-- ===================== Offcanvas Sidebar ======================== -->
+     <div class="offcanvas offcanvas-start border-0 shadow" tabindex="-1" id="mainOffcanvas" aria-labelledby="mainOffcanvasLabel" style="width: 320px;">
+        
+        <div class="offcanvas-header border-bottom py-3 d-flex align-items-center">
+            <button type="button" class="btn text-dark p-0 shadow-none border-0 me-3" data-bs-dismiss="offcanvas" aria-label="Close" style="font-size: 1.2rem;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <a href="#" class="text-decoration-none d-flex align-items-center text-dark flex-grow-1">
+                <div class="bg-light rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 45px; height: 45px;">
+                    <i class="fa-solid fa-user text-secondary fs-5"></i>
+                </div>
+                <span class="fw-medium fs-6">Login or Signup</span>
+            </a>
+        </div>
+
+        <div class="offcanvas-body p-0 custom-scrollbar">
+            <div class="list-group list-group-flush offcanvas-menu-list">
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">DMPL विशेष</span>
+                    <i class="fa-solid fa-crown text-warning fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">ई-पेपर</span>
+                    <i class="fa-regular fa-file-lines text-secondary fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom" data-bs-toggle="modal" data-bs-target="#cityModal" data-bs-dismiss="offcanvas">
+                    <span class="fw-medium">अपना शहर चुनें</span>
+                    <i class="bi bi-geo-alt text-secondary fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">न्यूज ब्रीफ</span>
+                    <i class="fa-regular fa-newspaper text-secondary fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">शॉर्ट वीडियोज</span>
+                    <i class="fa-solid fa-film text-secondary fs-5"></i>
+                </a>
+
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">देश</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+                
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">दुनिया</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+                
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">मनोरंजन</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+                
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">क्रिकेट</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- =================== Offcanvas Sidebar End ==================== -->
+
+                <a href="index.html" class="text-decoration-none">
+                    <h1 class="m-0 fw-bold text-dark" style="font-size: 2.2rem; letter-spacing: -1px;">DMPL</h1>
+                </a>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <a href="#" class="text-decoration-none text-dark d-flex align-items-center" title="शहर बदलें" data-bs-toggle="modal" data-bs-target="#cityModal">
+    <span class="me-1 fw-medium d-none d-sm-block" style="font-size: 1.05rem;" id="user-current-city">मेरा शहर</span>
+    <i class="bi bi-geo-alt text-secondary" style="font-size: 1.3rem; stroke-width: 0.5px;"></i>
+</a>
+
+<!-- ============== City Selection View ============ -->
+ <div class="modal fade" id="cityModal" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"> 
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+                
+                <div class="modal-header border-0 pb-0 justify-content-center position-relative">
+                    <button type="button" class="btn-close position-absolute end-0 me-3 shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center mt-2">
+                        <div class="fw-bold fs-5 mb-1" style="color: var(--brand-red);">
+                            <i class="fas fa-map-marker-alt"></i> अपना शहर चुनें
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-body pt-3 pb-4">
+                    <div class="position-relative mb-4">
+                        <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                        <input type="text" id="citySearchInput" class="form-control form-control-lg rounded-pill ps-5 shadow-none" placeholder="शहर खोजें..." style="border: 1px solid #ccc; font-size: 1rem;">
+                    </div>
+
+                    <div>
+                        <div id="popularSection">
+                            <p class="text-muted small fw-bold text-uppercase mb-2">लोकप्रिय शहर</p>
+                            <div class="row g-2 mb-4">
+                                <div class="col-4">
+                                    <button type="button" onclick="selectCity('लखनऊ')" class="btn w-100 popular-city-btn">
+                                        <i class="fa-solid fa-tree-city mb-1"></i><span class="d-block small fw-bold">लखनऊ</span>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button type="button" onclick="selectCity('कानपुर')" class="btn w-100 popular-city-btn">
+                                        <i class="fa-solid fa-city mb-1"></i><span class="d-block small fw-bold">कानपुर</span>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button type="button" onclick="selectCity('नई दिल्ली')" class="btn w-100 popular-city-btn">
+                                        <i class="fa-solid fa-building mb-1"></i><span class="d-block small fw-bold">दिल्ली</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-muted small fw-bold text-uppercase mb-2">सभी शहर</p>
+                        <div class="row g-2" id="allCitiesList">
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('आगरा')" class="list-city-btn" data-en="agra">आगरा</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('अहमदाबाद')" class="list-city-btn" data-en="ahmedabad">अहमदाबाद</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('अयोध्या')" class="list-city-btn" data-en="ayodhya">अयोध्या</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('बेंगलुरु')" class="list-city-btn" data-en="bangalore bengaluru">बेंगलुरु</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('चंडीगढ़')" class="list-city-btn" data-en="chandigarh">चंडीगढ़</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('चेन्नई')" class="list-city-btn" data-en="chennai">चेन्नई</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('नई दिल्ली')" class="list-city-btn" data-en="new delhi">नई दिल्ली</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('हैदराबाद')" class="list-city-btn" data-en="hyderabad">हैदराबाद</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('जयपुर')" class="list-city-btn" data-en="jaipur">जयपुर</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('कानपुर')" class="list-city-btn" data-en="kanpur">कानपुर</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('कोलकाता')" class="list-city-btn" data-en="kolkata">कोलकाता</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('लखनऊ')" class="list-city-btn" data-en="lucknow">लखनऊ</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('मुंबई')" class="list-city-btn" data-en="mumbai">मुंबई</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('पुणे')" class="list-city-btn" data-en="pune">पुणे</button></div>
+                            <div class="col-md-6 city-item"><button type="button" onclick="selectCity('वाराणसी')" class="list-city-btn" data-en="varanasi banaras">वाराणसी</button></div>
+                            
+                            <div class="col-12 text-center text-muted mt-3" id="noCityFound" style="display: none;">
+                                <i class="fa-regular fa-face-frown fs-1 mb-2"></i>
+                                <p>माफ़ करें, यह शहर नहीं मिला।</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============= Search Section ============ -->
+                
+                <div class="vr mx-2 mx-md-3 text-secondary" style="width: 1.5px; opacity: 0.4; height: 26px;"></div>
+                
+                <button class="btn btn-link text-dark p-0 shadow-none d-flex align-items-center text-decoration-none" aria-label="Search" style="font-size: 1.3rem;" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="bi bi-search text-secondary"></i>
+            </button>
+            </div>
+            
+        </div>
+
+        <!-- ============ Search Model View =========== -->
+         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"> <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
+                
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-dark" id="searchModalLabel">क्या खोजना चाहते हैं?</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body pt-3 pb-4">
+                    <form class="d-flex w-100">
+                        <input type="search" id="modalSearchInput" class="form-control form-control-lg me-2 shadow-none" placeholder="यहाँ टाइप करें..." style="border: 1px solid #ccc; font-size: 1.1rem;">
+                        <button type="submit" class="btn btn-danger px-4 fw-medium" style="font-size: 1.1rem;">खोजें</button>
+                    </form>
+                </div>
+
+                <div class="modal-footer border-0 pt-0 justify-content-start">
+                    <span class="text-muted small me-2">ट्रेंडिंग:</span>
+                    <a href="#" class="badge bg-light text-dark text-decoration-none border me-1">चुनाव 2026</a>
+                    <a href="#" class="badge bg-light text-dark text-decoration-none border me-1">शेयर बाजार</a>
+                    <a href="#" class="badge bg-light text-dark text-decoration-none border">मौसम</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- ============== Menu Bar Section =============== -->
+
+    <nav class="primary-nav-menu" id="primary-nav">
+            <div class="container-fluid px-2 px-lg-5 d-flex align-items-center justify-content-between h-100">
+                
+                <div class="nav-menu-links d-flex align-items-center overflow-auto custom-scrollbar flex-grow-1">
+                    
+                    <a href="#" class="nav-item nav-link"><i class="fas fa-home"></i></a>
+                    <a href="#" class="nav-item nav-link text-nowrap">Breaking</a>
+                    <!-- <a href="#" class="nav-item nav-link text-nowrap active">मनोरंजन</a> -->
+                    <a href="#" class="nav-item nav-link text-nowrap">देश</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">दुनिया</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">राजनीति</a>                    
+                    <!-- <div class="nav-item dropdown d-flex align-items-center h-100">
+                        <a href="#" class="nav-link text-nowrap dropdown-toggle" data-bs-toggle="dropdown" data-bs-boundary="window" style="border-bottom: none;">राज्य</a>
+                        <ul class="dropdown-menu shadow border-0 mt-0">
+                            <li><a class="dropdown-item" href="#">उत्तर प्रदेश</a></li>
+                            <li><a class="dropdown-item" href="#">मध्य प्रदेश</a></li>
+                            <li><a class="dropdown-item" href="#">बिहार</a></li>
+                            <li><a class="dropdown-item" href="#">उत्तराखंड</a></li>
+                        </ul>
+                    </div> -->
+
+                    <a href="#" class="nav-item nav-link text-nowrap">बिजनेस</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">मनोरंजन</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">करियर</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">धर्म</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">वीडियो</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">पॉडकास्ट</a>
+                </div>
+                
+            </div>
+        </nav>
+
+        <!-- ===================== NAVBAR END =========================== -->
+
+<main class="container my-4 my-lg-5">
+        
+        <div class="row mb-4">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2 small fw-medium">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted hover-danger"><i class="fas fa-home"></i> होम</a></li>
+                        <li class="breadcrumb-item active text-dark" aria-current="page">मनोरंजन</li>
+                    </ol>
+                </nav>
+                <h2 class="fw-bold border-bottom pb-2" style="color: #6a1b9a;">
+                    <i class="fas fa-film me-2"></i> मनोरंजन की ताज़ा ख़बरें
+                </h2>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-lg-8">
+                
+                <div class="category-list-wrapper">
+                    
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column flex-md-row category-news-card border-bottom pb-4 mb-4">
+                        <div class="img-wrapper-cat flex-shrink-0 rounded overflow-hidden mb-3 mb-md-0 me-md-4 position-relative">
+                            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="News Image" class="img-fluid w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                            <h4 class="fw-bold mb-2 line-clamp-2 cat-title">
+                                शाहरुख खान की 'जवान' का सीक्वल पक्का, निर्देशक एटली ने किया बड़ा खुलासा, फैंस हुए एक्साइटेड
+                            </h4>
+                            <p class="text-muted line-clamp-2 mb-2">
+                                बॉक्स ऑफिस पर ब्लॉकबस्टर साबित हुई फिल्म जवान के पार्ट 2 को लेकर एक बड़ी अपडेट सामने आई है। निर्देशक ने खुद इसकी पुष्टि कर दी है...
+                            </p>
+                            <div class="d-flex align-items-center text-secondary small fw-medium mt-auto">
+                                <span class="text-purple fw-bold me-3">बॉलीवुड</span>
+                                <span><i class="far fa-clock me-1"></i> 2 घंटे पहले</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column flex-md-row category-news-card border-bottom pb-4 mb-4">
+                        <div class="img-wrapper-cat flex-shrink-0 rounded overflow-hidden mb-3 mb-md-0 me-md-4 position-relative">
+                            <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="News Image" class="img-fluid w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                            <h4 class="fw-bold mb-2 line-clamp-2 cat-title">
+                                आलिया भट्ट ने मेट गाला 2026 में बिखेरा जलवा, सब्यसाची की साड़ी में ढाया कहर
+                            </h4>
+                            <p class="text-muted line-clamp-2 mb-2">
+                                हॉलीवुड के सबसे बड़े फैशन इवेंट में बॉलीवुड एक्ट्रेस आलिया भट्ट ने अपने देसी लुक से पूरी दुनिया का ध्यान अपनी ओर खींच लिया है...
+                            </p>
+                            <div class="d-flex align-items-center text-secondary small fw-medium mt-auto">
+                                <span class="text-purple fw-bold me-3">फैशन</span>
+                                <span><i class="far fa-clock me-1"></i> 4 घंटे पहले</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="text-decoration-none text-dark d-flex flex-column flex-md-row category-news-card border-bottom pb-4 mb-4">
+                        <div class="img-wrapper-cat flex-shrink-0 rounded overflow-hidden mb-3 mb-md-0 me-md-4 position-relative">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="News Image" class="img-fluid w-100 h-100 object-fit-cover">
+                            <div class="position-absolute top-50 start-50 translate-middle text-white" style="background: rgba(0,0,0,0.5); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-play ms-1"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                            <h4 class="fw-bold mb-2 line-clamp-2 cat-title">
+                                'पुष्पा 2' का नया टीजर रिलीज, अल्लू अर्जुन के खतरनाक लुक ने इंटरनेट पर मचाया तहलका
+                            </h4>
+                            <p class="text-muted line-clamp-2 mb-2">
+                                साउथ के सुपरस्टार अल्लू अर्जुन की मच-अवेटेड फिल्म पुष्पा 2 का धमाकेदार टीजर सामने आ गया है। रिलीज़ होते ही यह वीडियो ट्रेंड करने लगा है...
+                            </p>
+                            <div class="d-flex align-items-center text-secondary small fw-medium mt-auto">
+                                <span class="text-purple fw-bold me-3">टॉलीवुड</span>
+                                <span><i class="far fa-clock me-1"></i> 6 घंटे पहले</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="text-center mt-4 mb-5 mb-lg-0">
+                    <button class="btn btn-outline-danger px-5 py-2 fw-bold rounded-pill shadow-sm" id="loadMoreBtn">
+                        <i class="fas fa-sync-alt me-2"></i> और खबरें देखें
+                    </button>
+                    </div>
+
+            </div>
+            <div class="col-lg-4 d-none d-lg-block">
+                <aside class="sidebar-wrapper" style="position: sticky; top: 70px; z-index: 1020;">
+                    
+<div class="bg-white p-3 rounded shadow-sm border mb-4">
+                        <h5 class="fw-bold border-bottom pb-2 mb-3">
+                            <span class="text-danger me-2"><i class="fas fa-fire"></i></span> मनोरंजन में ट्रेंडिंग
+                        </h5>
+                        <div class="d-flex flex-column gap-3">
+                            
+                            <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card pb-2 border-bottom">
+                                <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                    <img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">रणबीर कपूर की 'रामायण' के सेट से तस्वीरें लीक</h6>
+                                </div>
+                            </a>
+
+                            <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card pb-2 border-bottom">
+                                <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">'पुष्पा 2' के टीजर ने तोड़े सारे रिकॉर्ड, 24 घंटे में मिले करोड़ों व्यूज</h6>
+                                </div>
+                            </a>
+
+                            <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card pb-2 border-bottom">
+                                <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">बॉक्स ऑफिस पर इस वीकेंड रिलीज होंगी ये 4 बड़ी फिल्में</h6>
+                                </div>
+                            </a>
+
+                            <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card pb-2 border-bottom">
+                                <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                    <img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">सलमान खान की नई फिल्म की घोषणा, ईद पर होगी रिलीज</h6>
+                                </div>
+                            </a>
+
+                            <a href="#" class="text-decoration-none text-dark d-flex align-items-center sidebar-news-card">
+                                <div class="flex-shrink-0 rounded overflow-hidden" style="width: 80px; height: 60px;">
+                                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy">
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="fw-bold mb-1 line-clamp-2 title-hover-red" style="font-size: 0.95rem;">कान्स फिल्म फेस्टिवल में भारतीय अभिनेत्रियों ने बिखेरा जलवा</h6>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded shadow-sm border text-center">
+                        <span class="text-muted small d-block mb-2">- Advertisement -</span>
+                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 250px; width: 100%; border: 1px dashed #ccc;">
+                            <span class="text-muted"><i class="fas fa-ad fa-2x"></i></span>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+            </div>
+    </main>
+
+
+    <!-- ================ Footer Section ================ -->
+     <footer class="bg-white border-top pt-5 pb-4 mt-5">
+        <div class="container-fluid px-3 px-lg-5">
+            
+            <div class="row g-4 mb-4 pb-4 border-bottom">
+                
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-3 text-dark">राज्य की खबरें</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">उत्तर प्रदेश</a></li>
+                        <li><a href="#">मध्य प्रदेश</a></li>
+                        <li><a href="#">बिहार</a></li>
+                        <li><a href="#">उत्तराखंड</a></li>
+                        <li><a href="#">दिल्ली</a></li>
+                        <li><a href="#">महाराष्ट्र</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-3 text-dark">मुख्य कैटेगरी</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">देश</a></li>
+                        <li><a href="#">दुनिया</a></li>
+                        <li><a href="#">मनोरंजन</a></li>
+                        <li><a href="#">बिज़नेस</a></li>
+                        <li><a href="#">क्रिकेट</a></li>
+                        <li><a href="#">वेब स्टोरीज</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-3 text-dark">अन्य लिंक्स</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">टेक-ऑटो</a></li>
+                        <li><a href="#">करियर</a></li>
+                        <li><a href="#">धर्म</a></li>
+                        <li><a href="#">लाइफस्टाइल</a></li>
+                        <li><a href="#">फोटो</a></li>
+                        <li><a href="#">वीडियो</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-3">
+                    <h6 class="fw-bold mb-3 text-dark">ट्रेंडिंग</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">विधानसभा चुनाव 2026</a></li>
+                        <li><a href="#">शेयर बाजार लाइव</a></li>
+                        <li><a href="#">आज का मौसम</a></li>
+                        <li><a href="#">सोने-चांदी के भाव</a></li>
+                        <li><a href="#">पेट्रोल-डीजल रेट</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-lg-3 mt-4 mt-lg-0">
+                    <div class="bg-danger rounded text-center text-white p-4 h-100 d-flex flex-column justify-content-center shadow-sm">
+                        <h4 class="fw-bold mb-2"><i class="fa-regular fa-newspaper me-2"></i>DMPL ई-पेपर</h4>
+                        <p class="small mb-3 opacity-75">आज का अख़बार और मैगज़ीन अपने मोबाइल पर एचडी में पढ़ें।</p>
+                        <a href="#" class="btn btn-light fw-bold text-danger rounded-pill px-4 py-2">यहाँ पढ़ें</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <p class="text-muted small mb-0" style="line-height: 1.7; text-align: justify;">
+                        <strong class="text-dark">Hindi News:</strong> DMPL News पर पढ़ें देश और दुनिया की ताज़ा ख़बरें (Latest Hindi News)। राजनीति, खेल, बॉलीवुड, व्यापार, शहर और लाइफस्टाइल से जुड़ी हर ब्रेकिंग न्यूज़ सबसे पहले पाएं। लाइव न्यूज़ अपडेट्स के लिए हमारे साथ जुड़े रहें।
+                    </p>
+                </div>
+            </div>
+
+            <div class="row align-items-center pt-3 border-top g-3">
+                
+                <div class="col-lg-7">
+                    <ul class="list-inline mb-2 mb-lg-1 small">
+                        <li class="list-inline-item me-3"><a href="#" class="text-muted text-decoration-none hover-danger">हमारे बारे में (About Us)</a></li>
+                        <li class="list-inline-item me-3"><a href="#" class="text-muted text-decoration-none hover-danger">संपर्क करें (Contact)</a></li>
+                        <li class="list-inline-item me-3"><a href="#" class="text-muted text-decoration-none hover-danger">प्राइवेसी पॉलिसी</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none hover-danger">नियम व शर्तें</a></li>
+                    </ul>
+                    <p class="text-muted small mb-0">&copy; 2025-26 DMPL News Limited. All rights reserved.</p>
+                </div>
+                
+                <div class="col-lg-5">
+                    <form class="d-flex align-items-center justify-content-lg-end" onsubmit="event.preventDefault();">
+                        <div class="input-group shadow-sm" style="max-width: 380px;">
+                            <span class="input-group-text bg-white text-muted border-end-0 pe-2"><i class="far fa-envelope"></i></span>
+                            <input type="email" class="form-control border-start-0 shadow-none ps-1" placeholder="अपना ईमेल दर्ज करें" required>
+                            <button class="btn btn-danger fw-medium px-4" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
