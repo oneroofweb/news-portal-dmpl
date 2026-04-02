@@ -2,46 +2,46 @@
    Global Variables & Base Styles
    ========================================================================== */
 :root {
-    /* Colors */
-    --brand-red: #e31e25;
-    --brand-red-hover: #c8191f;
-    --brand-dark: #363b3f;
-    --brand-maroon: #3b0000;
-    
-    /* Backgrounds */
-    --bg-light: #f8f9fa;
-    --bg-white: #ffffff;
-    
-    /* Text Colors */
-    --text-main: #222222;
-    --text-muted: #6c757d;
-    
-    /* Borders */
-    --border-color: #eaeaea;
-    --border-nav: #4a4f54;
+  /* Colors */
+  --brand-red: #e31e25;
+  --brand-red-hover: #c8191f;
+  --brand-dark: #363b3f;
+  --brand-maroon: #3b0000;
 
-    /* Typography */
-    --font-hindi: 'Noto Sans Devanagari', sans-serif;
-    --font-eng: 'Inter', sans-serif;
+  /* Backgrounds */
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+
+  /* Text Colors */
+  --text-main: #222222;
+  --text-muted: #6c757d;
+
+  /* Borders */
+  --border-color: #eaeaea;
+  --border-nav: #4a4f54;
+
+  /* Typography */
+  --font-hindi: "Noto Sans Devanagari", sans-serif;
+  --font-eng: "Inter", sans-serif;
 }
 
 body {
-    font-family: var(--font-hindi);
-    background-color: var(--bg-light);
-    color: var(--text-main);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  font-family: var(--font-hindi);
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 a {
-    text-decoration: none !important;
-    color: inherit;
-    transition: color 0.2s ease;
+  text-decoration: none !important;
+  color: inherit;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-    color: var(--brand-red);
+  color: var(--brand-red);
 }
 
 /* ==========================================================================
@@ -49,110 +49,112 @@ a:hover {
    ========================================================================== */
 
 .primary-nav-menu {
-    height: 48px; /* Standard height for news navbar */
-    background-color: #1a1a1a; /* Dark background matching the image */
-    position: relative;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
+  height: 48px; /* Standard height for news navbar */
+  background-color: #1a1a1a; /* Dark background matching the image */
+  position: relative;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
 /* Scrollable Links Container */
 .nav-menu-links {
-    height: 100%;
+  height: 100%;
 }
 
 .nav-menu-links .nav-link {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0 14px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #e0e0e0 !important; /* Light grey text */
-    border-bottom: 3px solid transparent; /* Transparent border for smooth hover */
-    transition: color 0.2s ease, border-bottom 0.2s ease;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #e0e0e0 !important; /* Light grey text */
+  border-bottom: 3px solid transparent; /* Transparent border for smooth hover */
+  transition:
+    color 0.2s ease,
+    border-bottom 0.2s ease;
 }
 
 /* Hover & Active State (Red Bottom Border & White Text) */
 .nav-menu-links .nav-link:hover,
 .nav-menu-links .nav-link.active {
-    color: #ffffff !important;
-    border-bottom: 3px solid var(--brand-red); 
+  color: #ffffff !important;
+  border-bottom: 3px solid var(--brand-red);
 }
 
 /* Specific styling for the Home Icon */
 .nav-menu-links .fa-home {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 /* Right Side Icons */
 .nav-action-icons {
-    height: 100%;
+  height: 100%;
 }
 
 .nav-icon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: #e0e0e0;
-    transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #e0e0e0;
+  transition: color 0.2s ease;
 }
 
 .nav-icon-btn:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* Dropdown fixes inside flex navbar */
 .primary-nav-menu .dropdown-menu {
-    background-color: #1a1a1a;
-    border-radius: 0 0 8px 8px;
+  background-color: #1a1a1a;
+  border-radius: 0 0 8px 8px;
 }
 .primary-nav-menu .dropdown-item {
-    color: #e0e0e0;
-    font-size: 14px;
-    padding: 8px 20px;
+  color: #e0e0e0;
+  font-size: 14px;
+  padding: 8px 20px;
 }
 .primary-nav-menu .dropdown-item:hover {
-    background-color: #333;
-    color: #ffffff;
+  background-color: #333;
+  color: #ffffff;
 }
 
 /* Horizontal Scrollbar hide utility (if not already added) */
 .custom-scrollbar {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; 
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 .custom-scrollbar::-webkit-scrollbar {
-    display: none; 
+  display: none;
 }
 
 /* =========================================
    CUSTOM STICKY NAVBAR CLASSES
    ========================================= */
 .is-sticky {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1040;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* हल्का शैडो */
-    animation: slideDown 0.3s ease-in-out;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1040;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  animation: slideDown 0.3s ease-in-out;
 }
 
 @keyframes slideDown {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* Dropdown Ko Scroll Ke bahar Dikhane Ke liye */
 .primary-nav-menu .dropdown-menu {
-    position: fixed !important;
+  position: fixed !important;
 }
 
 /* =========================================
@@ -198,36 +200,35 @@ a:hover {
   border-color: var(--brand-red);
 }
 
-
 /* =========================================
    OFFCANVAS MENU STYLES
    ========================================= */
 
 .offcanvas-menu-list .list-group-item {
-    border-left: none;
-    border-right: none;
-    border-color: #f0f0f0; /* Halka gray border */
-    font-size: 1.05rem;
-    color: #333;
+  border-left: none;
+  border-right: none;
+  border-color: #f0f0f0; /* Halka gray border */
+  font-size: 1.05rem;
+  color: #333;
 }
 
 .offcanvas-menu-list .list-group-item:hover {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 /* Follow Button Style */
 .btn-follow {
-    font-size: 0.75rem;
-    padding: 2px 15px;
-    border-color: #d1d5db;
-    color: #6c757d;
-    transition: all 0.2s ease;
+  font-size: 0.75rem;
+  padding: 2px 15px;
+  border-color: #d1d5db;
+  color: #6c757d;
+  transition: all 0.2s ease;
 }
 
 .btn-follow:hover {
-    background-color: var(--brand-red);
-    border-color: var(--brand-red);
-    color: #fff;
+  background-color: var(--brand-red);
+  border-color: var(--brand-red);
+  color: #fff;
 }
 
 /* ==========================================================================
@@ -236,69 +237,79 @@ a:hover {
 
 /* Image Containers & Sizing */
 .img-wrapper-large {
-    height: 380px;
+  height: 380px;
 }
 .img-wrapper-large .main-img {
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .img-wrapper-small {
-    width: 130px;
-    height: 85px;
+  width: 130px;
+  height: 85px;
 }
 .img-wrapper-small img {
-    transition: transform 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
 .object-fit-cover {
-    object-fit: cover;
+  object-fit: cover;
 }
 
 /* Hover Effects (Zoom Image & Color Text Red) */
 .main-story-card:hover .main-img,
 .small-story-card:hover img {
-    transform: scale(1.06);
+  transform: scale(1.06);
 }
 
 .main-story-card .main-title,
 .small-story-card .small-title {
-    transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .main-story-card:hover .main-title,
 .small-story-card:hover .small-title {
-    color: var(--brand-red) !important;
+  color: var(--brand-red) !important;
 }
 
 /* Badge styling */
 .badge-breaking {
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    z-index: 2;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  z-index: 2;
 }
 
 /* Responsive Adjustments for Hero Section */
 @media (max-width: 991.98px) {
-    .img-wrapper-large { height: 280px; }
-    .main-story-card .main-title { font-size: 1.6rem; }
-    .main-story-card .main-desc { font-size: 1rem; }
+  .img-wrapper-large {
+    height: 280px;
+  }
+  .main-story-card .main-title {
+    font-size: 1.6rem;
+  }
+  .main-story-card .main-desc {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 767.98px) {
-    .img-wrapper-small {
-        width: 100px;
-        height: 75px;
-    }
-    .small-story-card .small-title {
-        font-size: 1rem;
-    }
+  .img-wrapper-small {
+    width: 100px;
+    height: 75px;
+  }
+  .small-story-card .small-title {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 575.98px) {
-    .img-wrapper-large { height: 220px; }
-    .main-story-card .main-title { font-size: 1.4rem; }
+  .img-wrapper-large {
+    height: 220px;
+  }
+  .main-story-card .main-title {
+    font-size: 1.4rem;
+  }
 }
 
 /* ==========================================================================
@@ -307,58 +318,58 @@ a:hover {
 
 /* Custom Purple Theme for Entertainment */
 .text-purple {
-    color: #6a1b9a !important; /* Deep Purple */
+  color: #6a1b9a !important; /* Deep Purple */
 }
 
 .title-hover-purple {
-    transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 /* Hover Effects (Text Color & Image Zoom) */
 .main-ent-card:hover .title-hover-purple,
 .small-ent-card:hover .title-hover-purple {
-    color: #6a1b9a !important;
+  color: #6a1b9a !important;
 }
 
-.main-ent-card img, 
+.main-ent-card img,
 .small-ent-card img {
-    transition: transform 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
-.main-ent-card:hover img, 
+.main-ent-card:hover img,
 .small-ent-card:hover img {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* Image Heights (Desktop) */
 .img-wrapper-ent-large {
-    height: 350px;
+  height: 350px;
 }
 .img-wrapper-ent-small {
-    height: 160px;
+  height: 160px;
 }
 
 /* Responsive Adjustments for Tablets and Mobile */
 @media (max-width: 991.98px) {
-    .img-wrapper-ent-large { 
-        height: 280px; 
-    }
+  .img-wrapper-ent-large {
+    height: 280px;
+  }
 }
 
 @media (max-width: 767.98px) {
-    /* Mobile Par Main Image ki height thodi kam */
-    .img-wrapper-ent-large { 
-        height: 220px; 
-    }
-    
-    /* Mobile par 4 choti stories ki height aur text ka size */
-    .img-wrapper-ent-small { 
-        height: 110px; /* Perfect height for 50% width grid on mobile */
-    }
-    .small-ent-card h6 { 
-        font-size: 0.95rem; 
-        line-height: 1.4;
-    }
+  /* Mobile Par Main Image ki height thodi kam */
+  .img-wrapper-ent-large {
+    height: 220px;
+  }
+
+  /* Mobile par 4 choti stories ki height aur text ka size */
+  .img-wrapper-ent-small {
+    height: 110px; /* Perfect height for 50% width grid on mobile */
+  }
+  .small-ent-card h6 {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
 }
 
 /* ==========================================================================
@@ -367,102 +378,121 @@ a:hover {
 
 /* Sticky Sidebar Smoothness */
 .sidebar-wrapper {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 /* Social Media Buttons */
 .social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
-    color: #fff !important;
-    font-size: 1.2rem;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  color: #fff !important;
+  font-size: 1.2rem;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 .social-btn:hover {
-    transform: translateY(-3px);
-    opacity: 0.85;
+  transform: translateY(-3px);
+  opacity: 0.85;
 }
-.social-btn.facebook { background-color: #1877F2; }
-.social-btn.twitter { background-color: #1DA1F2; } /* Ya Black for X */
-.social-btn.youtube { background-color: #FF0000; }
-.social-btn.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-.social-btn.whatsapp { background-color: #25D366; }
+.social-btn.facebook {
+  background-color: #1877f2;
+}
+.social-btn.twitter {
+  background-color: #1da1f2;
+} /* Ya Black for X */
+.social-btn.youtube {
+  background-color: #ff0000;
+}
+.social-btn.instagram {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+.social-btn.whatsapp {
+  background-color: #25d366;
+}
 
 /* Trending News Sidebar List */
 .sidebar-news-card img {
-    transition: transform 0.4s ease;
+  transition: transform 0.4s ease;
 }
 .sidebar-news-card:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 .sidebar-news-card:hover .title-hover-red {
-    color: var(--brand-red) !important;
+  color: var(--brand-red) !important;
 }
 
 /* Sidebar Tags */
 .sidebar-tag {
-    background-color: var(--bg-light);
-    color: var(--text-main);
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border: 1px solid var(--border-color);
-    transition: all 0.2s ease;
-    text-decoration: none;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
 .sidebar-tag:hover {
-    background-color: var(--brand-red);
-    color: #fff !important;
-    border-color: var(--brand-red);
+  background-color: var(--brand-red);
+  color: #fff !important;
+  border-color: var(--brand-red);
 }
 
 /* Mobile Alignment for Sidebar */
 @media (max-width: 991.98px) {
-    .sidebar-wrapper {
-        margin-top: 20px;
-    }
+  .sidebar-wrapper {
+    margin-top: 20px;
+  }
 }
-
 
 /* =========================================
    FOOTER STYLES
    ========================================= */
 
 .footer-links li {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .footer-links a {
-    color: #555555;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s ease, padding-left 0.2s ease;
-    display: inline-block;
+  color: #555555;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
+  display: inline-block;
 }
 
 /* Hover effect - Link turns red and slightly moves right */
 .footer-links a:hover {
-    color: var(--brand-red);
-    padding-left: 4px; 
+  color: var(--brand-red);
+  padding-left: 4px;
 }
 
 .hover-danger {
-    transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .hover-danger:hover {
-    color: var(--brand-red) !important;
+  color: var(--brand-red) !important;
 }
 
 /* ===============================================================================
              ************ HOME PAGE CSS - END HERE ***************
    =============================================================================== */
-
 
 /* ===============================================================================
    CATEGORY LISTING PAGE STYLES
@@ -470,33 +500,123 @@ a:hover {
 
 /* Category News Image Wrapper */
 .img-wrapper-cat {
-    width: 260px;
-    height: 160px;
+  width: 260px;
+  height: 160px;
 }
 .img-wrapper-cat img {
-    transition: transform 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
 /* Hover Effects */
 .category-news-card:hover .img-wrapper-cat img {
-    transform: scale(1.08); /* Image Zoom */
+  transform: scale(1.08); /* Image Zoom */
 }
 
 .cat-title {
-    transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .category-news-card:hover .cat-title {
-    color: var(--brand-red) !important; /* Title turns red on hover */
+  color: var(--brand-red) !important; /* Title turns red on hover */
 }
 
 /* Mobile Adjustments */
 @media (max-width: 767.98px) {
-    .img-wrapper-cat {
-        width: 100%;
-        height: 200px;
-    }
-    .cat-title {
-        font-size: 1.3rem;
+  .img-wrapper-cat {
+    width: 100%;
+    height: 200px;
+  }
+  .cat-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* =========================================
+   SINGLE News Page - CSS
+   ========================================= */
+
+.article-main-title {
+  font-size: 2.2rem;
+}
+
+@media (max-width: 767.98px) {
+  .article-main-title {
+    font-size: 1.6rem;
+  }
+  .article-body-content {
+    font-size: 1.05rem !important; /* Mobile pe font thoda adjust kiya hai */
+  }
+}
+
+/* Article Paragraph Spacing */
+.article-body-content p {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Social Share Buttons Hover Colors */
+.article-share-btns .btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.article-share-btns .whatsapp-btn:hover {
+  background-color: #25d366;
+  color: #fff !important;
+  border-color: #25d366;
+}
+.article-share-btns .facebook-btn:hover {
+  background-color: #1877f2;
+  color: #fff !important;
+  border-color: #1877f2;
+}
+.article-share-btns .twitter-btn:hover {
+  background-color: #1da1f2;
+  color: #fff !important;
+  border-color: #1da1f2;
+}
+.article-share-btns .copy-link-btn:hover {
+  background-color: #6c757d;
+  color: #fff !important;
+  border-color: #6c757d;
+}
+
+/* Blockquote Style */
+blockquote p {
+  color: #444;
+}
+
+
+/* =========================================
+   RELATED NEWS STYLES
+   ========================================= */
+
+.related-img-wrapper {
+    height: 180px; 
+}
+
+.related-img-wrapper img {
+    transition: transform 0.4s ease;
+}
+
+.related-news-card:hover .related-img-wrapper img {
+    transform: scale(1.08); 
+}
+
+.title-hover-danger {
+    transition: color 0.2s ease;
+}
+
+.related-news-card:hover .title-hover-danger {
+    color: var(--brand-red) !important; 
+}
+
+@media (max-width: 767.98px) {
+    .related-img-wrapper {
+        height: 200px; 
     }
 }
