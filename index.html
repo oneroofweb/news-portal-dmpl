@@ -25,9 +25,78 @@
 <div class="topbar-custom bg-white d-flex justify-content-between align-items-center px-3 px-lg-5 py-2 border-bottom" style="border-top: 3px solid var(--brand-red);">
             
             <div class="d-flex align-items-center">
-                <button class="btn btn-link text-dark p-0 me-3 menu-toggle shadow-none d-flex align-items-center text-decoration-none" aria-label="Menu" style="font-size: 1.7rem;">
-                    <i class="fa fa-bars"></i>
-                </button>
+                <button class="btn btn-link text-dark p-0 me-3 shadow-none d-flex align-items-center text-decoration-none" aria-label="Menu" style="font-size: 1.7rem;" data-bs-toggle="offcanvas" data-bs-target="#mainOffcanvas" aria-controls="mainOffcanvas">
+                <i class="fa fa-bars"></i>
+            </button>
+
+    <!-- ===================== Offcanvas Sidebar ======================== -->
+     <div class="offcanvas offcanvas-start border-0 shadow" tabindex="-1" id="mainOffcanvas" aria-labelledby="mainOffcanvasLabel" style="width: 320px;">
+        
+        <div class="offcanvas-header border-bottom py-3 d-flex align-items-center">
+            <button type="button" class="btn text-dark p-0 shadow-none border-0 me-3" data-bs-dismiss="offcanvas" aria-label="Close" style="font-size: 1.2rem;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <a href="#" class="text-decoration-none d-flex align-items-center text-dark flex-grow-1">
+                <div class="bg-light rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 45px; height: 45px;">
+                    <i class="fa-solid fa-user text-secondary fs-5"></i>
+                </div>
+                <span class="fw-medium fs-6">Login or Signup</span>
+            </a>
+        </div>
+
+        <div class="offcanvas-body p-0 custom-scrollbar">
+            <div class="list-group list-group-flush offcanvas-menu-list">
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">DMPL विशेष</span>
+                    <i class="fa-solid fa-crown text-warning fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">ई-पेपर</span>
+                    <i class="fa-regular fa-file-lines text-secondary fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom" data-bs-toggle="modal" data-bs-target="#cityModal" data-bs-dismiss="offcanvas">
+                    <span class="fw-medium">अपना शहर चुनें</span>
+                    <i class="bi bi-geo-alt text-secondary fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">न्यूज ब्रीफ</span>
+                    <i class="fa-regular fa-newspaper text-secondary fs-5"></i>
+                </a>
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <span class="fw-medium">शॉर्ट वीडियोज</span>
+                    <i class="fa-solid fa-film text-secondary fs-5"></i>
+                </a>
+
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">देश</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+                
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">दुनिया</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+                
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">मनोरंजन</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+                
+                <div class="list-group-item d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <a href="#" class="text-decoration-none text-dark fw-medium flex-grow-1">क्रिकेट</a>
+                    <button class="btn btn-outline-secondary rounded-pill btn-sm px-3 btn-follow">Follow</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- =================== Offcanvas Sidebar End ==================== -->
+
                 <a href="index.html" class="text-decoration-none">
                     <h1 class="m-0 fw-bold text-dark" style="font-size: 2.2rem; letter-spacing: -1px;">DMPL</h1>
                 </a>
@@ -157,17 +226,12 @@
                 <div class="nav-menu-links d-flex align-items-center overflow-auto custom-scrollbar flex-grow-1">
                     
                     <a href="#" class="nav-item nav-link"><i class="fas fa-home"></i></a>
-                    
-                    <a href="#" class="nav-item nav-link text-nowrap">मेरी फ़ीड</a>
-                    
-                    <a href="#" class="nav-item nav-link text-nowrap active">मनोरंजन</a>
-                    
+                    <a href="#" class="nav-item nav-link text-nowrap">Breaking</a>
+                    <!-- <a href="#" class="nav-item nav-link text-nowrap active">मनोरंजन</a> -->
                     <a href="#" class="nav-item nav-link text-nowrap">देश</a>
-                    <a href="#" class="nav-item nav-link text-nowrap">क्रिकेट</a>
-                    <a href="#" class="nav-item nav-link text-nowrap">वायरल</a>
-                    <a href="#" class="nav-item nav-link text-nowrap">वेब स्टोरीज</a>
-                    
-                    <div class="nav-item dropdown d-flex align-items-center h-100">
+                    <a href="#" class="nav-item nav-link text-nowrap">दुनिया</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">राजनीति</a>                    
+                    <!-- <div class="nav-item dropdown d-flex align-items-center h-100">
                         <a href="#" class="nav-link text-nowrap dropdown-toggle" data-bs-toggle="dropdown" data-bs-boundary="window" style="border-bottom: none;">राज्य</a>
                         <ul class="dropdown-menu shadow border-0 mt-0">
                             <li><a class="dropdown-item" href="#">उत्तर प्रदेश</a></li>
@@ -175,15 +239,12 @@
                             <li><a class="dropdown-item" href="#">बिहार</a></li>
                             <li><a class="dropdown-item" href="#">उत्तराखंड</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                     <a href="#" class="nav-item nav-link text-nowrap">बिजनेस</a>
+                    <a href="#" class="nav-item nav-link text-nowrap">मनोरंजन</a>
                     <a href="#" class="nav-item nav-link text-nowrap">करियर</a>
-                    <a href="#" class="nav-item nav-link text-nowrap">टेक-ऑटो</a>
-                    <a href="#" class="nav-item nav-link text-nowrap">दुनिया</a>
                     <a href="#" class="nav-item nav-link text-nowrap">धर्म</a>
-                    <a href="#" class="nav-item nav-link text-nowrap">लाइफस्टाइल</a>
-                    <a href="#" class="nav-item nav-link text-nowrap">फोटो</a>
                     <a href="#" class="nav-item nav-link text-nowrap">वीडियो</a>
                     <a href="#" class="nav-item nav-link text-nowrap">पॉडकास्ट</a>
                 </div>
@@ -1000,6 +1061,103 @@
                 </div>
             </div>
     </section>
+
+    <!-- ================ Footer Section ================ -->
+     <footer class="bg-white border-top pt-5 pb-4 mt-5">
+        <div class="container-fluid px-3 px-lg-5">
+            
+            <div class="row g-4 mb-4 pb-4 border-bottom">
+                
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-3 text-dark">राज्य की खबरें</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">उत्तर प्रदेश</a></li>
+                        <li><a href="#">मध्य प्रदेश</a></li>
+                        <li><a href="#">बिहार</a></li>
+                        <li><a href="#">उत्तराखंड</a></li>
+                        <li><a href="#">दिल्ली</a></li>
+                        <li><a href="#">महाराष्ट्र</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-3 text-dark">मुख्य कैटेगरी</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">देश</a></li>
+                        <li><a href="#">दुनिया</a></li>
+                        <li><a href="#">मनोरंजन</a></li>
+                        <li><a href="#">बिज़नेस</a></li>
+                        <li><a href="#">क्रिकेट</a></li>
+                        <li><a href="#">वेब स्टोरीज</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-3 text-dark">अन्य लिंक्स</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">टेक-ऑटो</a></li>
+                        <li><a href="#">करियर</a></li>
+                        <li><a href="#">धर्म</a></li>
+                        <li><a href="#">लाइफस्टाइल</a></li>
+                        <li><a href="#">फोटो</a></li>
+                        <li><a href="#">वीडियो</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-3">
+                    <h6 class="fw-bold mb-3 text-dark">ट्रेंडिंग</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">विधानसभा चुनाव 2026</a></li>
+                        <li><a href="#">शेयर बाजार लाइव</a></li>
+                        <li><a href="#">आज का मौसम</a></li>
+                        <li><a href="#">सोने-चांदी के भाव</a></li>
+                        <li><a href="#">पेट्रोल-डीजल रेट</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-lg-3 mt-4 mt-lg-0">
+                    <div class="bg-danger rounded text-center text-white p-4 h-100 d-flex flex-column justify-content-center shadow-sm">
+                        <h4 class="fw-bold mb-2"><i class="fa-regular fa-newspaper me-2"></i>DMPL ई-पेपर</h4>
+                        <p class="small mb-3 opacity-75">आज का अख़बार और मैगज़ीन अपने मोबाइल पर एचडी में पढ़ें।</p>
+                        <a href="#" class="btn btn-light fw-bold text-danger rounded-pill px-4 py-2">यहाँ पढ़ें</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <p class="text-muted small mb-0" style="line-height: 1.7; text-align: justify;">
+                        <strong class="text-dark">Hindi News:</strong> DMPL News पर पढ़ें देश और दुनिया की ताज़ा ख़बरें (Latest Hindi News)। राजनीति, खेल, बॉलीवुड, व्यापार, शहर और लाइफस्टाइल से जुड़ी हर ब्रेकिंग न्यूज़ सबसे पहले पाएं। लाइव न्यूज़ अपडेट्स के लिए हमारे साथ जुड़े रहें।
+                    </p>
+                </div>
+            </div>
+
+            <div class="row align-items-center pt-3 border-top g-3">
+                
+                <div class="col-lg-7">
+                    <ul class="list-inline mb-2 mb-lg-1 small">
+                        <li class="list-inline-item me-3"><a href="#" class="text-muted text-decoration-none hover-danger">हमारे बारे में (About Us)</a></li>
+                        <li class="list-inline-item me-3"><a href="#" class="text-muted text-decoration-none hover-danger">संपर्क करें (Contact)</a></li>
+                        <li class="list-inline-item me-3"><a href="#" class="text-muted text-decoration-none hover-danger">प्राइवेसी पॉलिसी</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none hover-danger">नियम व शर्तें</a></li>
+                    </ul>
+                    <p class="text-muted small mb-0">&copy; 2025-26 DMPL News Limited. All rights reserved.</p>
+                </div>
+                
+                <div class="col-lg-5">
+                    <form class="d-flex align-items-center justify-content-lg-end" onsubmit="event.preventDefault();">
+                        <div class="input-group shadow-sm" style="max-width: 380px;">
+                            <span class="input-group-text bg-white text-muted border-end-0 pe-2"><i class="far fa-envelope"></i></span>
+                            <input type="email" class="form-control border-start-0 shadow-none ps-1" placeholder="अपना ईमेल दर्ज करें" required>
+                            <button class="btn btn-danger fw-medium px-4" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
