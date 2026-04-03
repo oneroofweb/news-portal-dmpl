@@ -39,10 +39,10 @@
                         <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Content</small>
                     </li>
                     <li class="nav-item">
-                        <a href="add-new-post.html" class="nav-link"><i class="fas fa-pen-nib me-3"></i> Add New Post</a>
+                        <a href="add-new-post.html" class="nav-link active"><i class="fas fa-pen-nib me-3"></i> Add New Post</a>
                     </li>
                     <li class="nav-item">
-                        <a href="all-post.html" class="nav-link active"><i class="fas fa-list me-3"></i> All Posts</a>
+                        <a href="all-post.html" class="nav-link"><i class="fas fa-list me-3"></i> All Posts</a>
                     </li>
                     <li class="nav-item">
                         <a href="categories.html" class="nav-link"><i class="fas fa-layer-group me-3"></i> Category Management</a>
@@ -100,9 +100,9 @@
                         <h4 class="fw-bold m-0 text-dark">All Posts (सभी ख़बरें)</h4>
                         <p class="text-muted small m-0 mt-1">यहाँ से आप सभी ख़बरों को मैनेज, एडिट या डिलीट कर सकते हैं।</p>
                     </div>
-                    <button class="btn btn-danger shadow-sm fw-medium" data-bs-toggle="modal" data-bs-target="#postModal" onclick="openAddModal()">
+                    <a href="add-new-post.html" class="btn btn-danger shadow-sm fw-medium">
                         <i class="fas fa-pen me-2"></i> Write New Post
-                    </button>
+                    </a>
                 </div>
 
                 <div class="card border-0 shadow-sm bg-white">
@@ -199,8 +199,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="admin-script.js"></script> <script>
+   <script>
         // --- 1. Dummy Data (Backend JSON format se aayega future mein) ---
         let posts = [
             { id: 1, title: "Shahrukh Khan's 'Jawan 2' Officially Announced by Atlee", category: "Entertainment", author: "Atharva", status: "Published", date: "03 Apr 2026", img: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=100" },
