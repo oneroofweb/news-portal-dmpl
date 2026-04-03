@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMPL Admin - Users Management</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link href="admin-style.css" rel="stylesheet">
+    
+    <style>
+        /* --- Users Page Premium UI --- */
+        .admin-main { background-color: #f4f7fa; }
+        
+        .card {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+        }
+
+        /* --- User Table Styling --- */
+        #userTable th {
+            background-color: #f8f9fa;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #6c757d;
+            padding: 15px;
+        }
+        
+        #userTable td {
+            vertical-align: middle;
+            padding: 15px;
+            border-bottom: 1px solid #f1f1f4;
+        }
+
+        /* --- Avatar Styling --- */
+        .avatar-circle {
+            width: 40px;
+            height: 40px;
+            background-color: #e31e25;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        /* --- Status Badges --- */
+        .bg-success-light { background-color: rgba(25, 135, 84, 0.1); color: #198754; font-weight: 600; }
+        .bg-danger-light { background-color: rgba(220, 53, 69, 0.1); color: #dc3545; font-weight: 600; }
+
+        /* --- Row Hover --- */
+        #userTable tbody tr { transition: all 0.2s ease; }
+        #userTable tbody tr:hover {
+            background-color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+        }
+
+        .hover-success:hover { background-color: #198754 !important; color: #fff !important; }
+        .hover-danger:hover { background-color: #dc3545 !important; color: #fff !important; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="admin-wrapper d-flex">
+        
+        <aside class="admin-sidebar bg-dark text-white shadow-sm" id="sidebar">
+            <div class="sidebar-header d-flex align-items-center justify-content-between px-4 py-3 border-bottom border-secondary">
+                <h3 class="fw-bold m-0 text-white">DMPL <span class="text-danger fs-6">Admin</span></h3>
+                <button class="btn btn-link text-white d-md-none p-0" id="closeSidebar">
+                    <i class="fas fa-times fs-4"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-menu py-3 custom-scrollbar">
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3 mb-2">
+                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Main</small>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin.html" class="nav-link"><i class="fas fa-tachometer-alt me-3"></i> Dashboard</a>
+                    </li>
+                    
+                    <li class="nav-item px-3 mt-4 mb-2">
+                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Content</small>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-new-post.html" class="nav-link"><i class="fas fa-pen-nib me-3"></i> Add New Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="all-post.html" class="nav-link"><i class="fas fa-list me-3"></i> All Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="categories.html" class="nav-link"><i class="fas fa-layer-group me-3"></i> Category Management</a>
+                    </li>
+
+                    <li class="nav-item px-3 mt-4 mb-2">
+                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Settings</small>
+                    </li>
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link active"><i class="fas fa-users me-3"></i> Users / Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="setting.html" class="nav-link"><i class="fas fa-cog me-3"></i> Website Setting</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="admin-main flex-grow-1 d-flex flex-column" id="main-content">
+            
+            <header class="admin-topbar bg-white shadow-sm px-4 py-3 d-flex align-items-center justify-content-between sticky-top">
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-light me-3 shadow-none" id="toggleSidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h5 class="m-0 fw-bold d-none d-sm-block text-dark">डैशबोर्ड</h5>
+                </div>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-light position-relative rounded-circle d-flex justify-content-center align-items-center shadow-none" style="width: 40px; height: 40px;">
+                        <i class="far fa-bell fs-5 text-dark"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle" style="margin-top: 5px; margin-left: -5px;"></span>
+                    </button>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle" data-bs-toggle="dropdown">
+                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 35px; height: 35px;">
+                                A
+                            </div>
+                            <span class="d-none d-md-block fw-medium">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="far fa-user me-2"></i> प्रोफाइल</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i> लॉग आउट</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-body p-4 p-md-5 flex-grow-1 custom-scrollbar">
+                
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                    <div>
+                        <h4 class="fw-bold m-0 text-dark">User Management</h4>
+                        <p class="text-muted small m-0 mt-1">Manage staff roles and website users.</p>
+                    </div>
+                    <button class="btn btn-danger shadow-sm fw-medium px-4" data-bs-toggle="modal" data-bs-target="#userModal" onclick="resetForm()">
+                        <i class="fas fa-user-plus me-2"></i> Add New User
+                    </button>
+                </div>
+
+                <div class="card bg-white border-0">
+                    <div class="card-body p-4">
+                        
+                        <div class="row mb-4 g-3">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="input-group border rounded-3 p-1 h-100 bg-light bg-opacity-50">
+                                    <span class="input-group-text bg-transparent border-0"><i class="fas fa-search text-muted"></i></span>
+                                    <input type="text" id="userSearch" class="form-control border-0 shadow-none bg-transparent" placeholder="Search by name or email...">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <select id="filterRole" class="form-select border rounded-3 shadow-none p-2 text-muted fw-medium bg-light bg-opacity-50 h-100">
+                                    <option value="All">All Roles (सभी पद)</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Editor">Editor</option>
+                                    <option value="Author">Author</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <select id="filterStatus" class="form-select border rounded-3 shadow-none p-2 text-muted fw-medium bg-light bg-opacity-50 h-100">
+                                    <option value="All">All Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table align-middle" id="userTable">
+                                <thead>
+                                    <tr>
+                                        <th>User Details</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Joined Date</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userTableBody"></tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="userModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold" id="userModalLabel">Add New User</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="userForm">
+                        <input type="hidden" id="userId">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Full Name</label>
+                            <input type="text" id="userName" class="form-control shadow-none" required placeholder="Enter full name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Email Address</label>
+                            <input type="email" id="userEmail" class="form-control shadow-none" required placeholder="email@example.com">
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Role</label>
+                                <select id="userRole" class="form-select shadow-none">
+                                    <option value="Admin">Admin</option>
+                                    <option value="Editor">Editor</option>
+                                    <option value="Author">Author</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label class="form-label small fw-bold">Status</label>
+                                <select id="userStatus" class="form-select shadow-none">
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100 fw-bold py-2">Save User Details</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let users = [
+            { id: 1, name: "Atharva", email: "atharva@oneroof.com", role: "Admin", status: "Active", date: "12 Oct 2025" },
+            { id: 2, name: "Rahul Sharma", email: "rahul@dmpl.com", role: "Editor", status: "Active", date: "15 Nov 2025" },
+            { id: 3, name: "Priya Gupta", email: "priya@dmpl.com", role: "Author", status: "Inactive", date: "02 Feb 2026" }
+        ];
+
+        const userTableBody = document.getElementById('userTableBody');
+        const userForm = document.getElementById('userForm');
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('userSearch').value.toLowerCase();
+            const roleTerm = document.getElementById('filterRole').value;
+            const statusTerm = document.getElementById('filterStatus').value;
+
+            const filtered = users.filter(u => {
+                const matchSearch = u.name.toLowerCase().includes(searchTerm) || u.email.toLowerCase().includes(searchTerm);
+                const matchRole = roleTerm === 'All' || u.role === roleTerm;
+                const matchStatus = statusTerm === 'All' || u.status === statusTerm;
+                return matchSearch && matchRole && matchStatus;
+            });
+            renderUsers(filtered);
+        }
+
+        function renderUsers(dataToRender = users) {
+            userTableBody.innerHTML = '';
+            if(dataToRender.length === 0) {
+                userTableBody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-5">No matching users found!</td></tr>`;
+                return;
+            }
+            dataToRender.forEach(u => {
+                const statusClass = u.status === 'Active' ? 'bg-success-light' : 'bg-danger-light';
+                userTableBody.innerHTML += `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-circle me-3">${u.name.charAt(0)}</div>
+                                <div><div class="fw-bold text-dark">${u.name}</div><div class="small text-muted">${u.email}</div></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-light text-dark border">${u.role}</span></td>
+                        <td><span class="badge ${statusClass} border border-opacity-25 px-2 py-1">${u.status}</span></td>
+                        <td class="small text-muted">${u.date}</td>
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-light border text-primary me-1 hover-success" onclick="editUser(${u.id})"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-light border text-danger hover-danger" onclick="deleteUser(${u.id})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        userForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('userId').value;
+            const newUser = {
+                id: id ? parseInt(id) : Date.now(),
+                name: document.getElementById('userName').value,
+                email: document.getElementById('userEmail').value,
+                role: document.getElementById('userRole').value,
+                status: document.getElementById('userStatus').value,
+                date: id ? users.find(u => u.id === parseInt(id)).date : "Just Now"
+            };
+            if(id) {
+                const index = users.findIndex(u => u.id === parseInt(id));
+                users[index] = newUser;
+            } else {
+                users.unshift(newUser);
+            }
+            bootstrap.Modal.getInstance(document.getElementById('userModal')).hide();
+            applyFilters();
+        });
+
+        window.editUser = (id) => {
+            const u = users.find(user => user.id === id);
+            document.getElementById('userId').value = u.id;
+            document.getElementById('userName').value = u.name;
+            document.getElementById('userEmail').value = u.email;
+            document.getElementById('userRole').value = u.role;
+            document.getElementById('userStatus').value = u.status;
+            document.getElementById('userModalLabel').innerText = 'Edit User Details';
+            new bootstrap.Modal(document.getElementById('userModal')).show();
+        };
+
+        window.deleteUser = (id) => {
+            if(confirm('Are you sure you want to delete this user?')) {
+                users = users.filter(u => u.id !== id);
+                applyFilters();
+            }
+        };
+
+        window.resetForm = () => {
+            userForm.reset();
+            document.getElementById('userId').value = '';
+            document.getElementById('userModalLabel').innerText = 'Add New User';
+        };
+
+        document.getElementById('userSearch').addEventListener('input', applyFilters);
+        document.getElementById('filterRole').addEventListener('change', applyFilters);
+        document.getElementById('filterStatus').addEventListener('change', applyFilters);
+        renderUsers();
+    </script>
+</body>
+</html>

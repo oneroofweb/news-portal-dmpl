@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMPL Admin - Category Management</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link href="admin-style.css" rel="stylesheet">
+    
+    <style>
+        /* --- Category Specific Premium UI --- */
+        .admin-main { background-color: #f4f7fa; }
+        
+        .card {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            color: #6c757d;
+        }
+
+        /* --- Table Styling --- */
+        #categoryTable th {
+            background-color: #f8f9fa;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #6c757d;
+            padding: 15px;
+        }
+        
+        #categoryTable td {
+            vertical-align: middle;
+            padding: 15px;
+            border-bottom: 1px solid #f1f1f4;
+        }
+
+        /* --- Hover Effect --- */
+        #categoryTable tbody tr { transition: all 0.2s ease; }
+        #categoryTable tbody tr:hover {
+            background-color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+        }
+
+        .hover-success:hover { background-color: #198754 !important; color: #fff !important; }
+        .hover-danger:hover { background-color: #dc3545 !important; color: #fff !important; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="admin-wrapper d-flex">
+        
+        <aside class="admin-sidebar bg-dark text-white shadow-sm" id="sidebar">
+            <div class="sidebar-header d-flex align-items-center justify-content-between px-4 py-3 border-bottom border-secondary">
+                <h3 class="fw-bold m-0 text-white">DMPL <span class="text-danger fs-6">Admin</span></h3>
+                <button class="btn btn-link text-white d-md-none p-0" id="closeSidebar">
+                    <i class="fas fa-times fs-4"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-menu py-3 custom-scrollbar">
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3 mb-2">
+                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Main</small>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin.html" class="nav-link"><i class="fas fa-tachometer-alt me-3"></i> Dashboard</a>
+                    </li>
+                    
+                    <li class="nav-item px-3 mt-4 mb-2">
+                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Content</small>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-new-post.html" class="nav-link"><i class="fas fa-pen-nib me-3"></i> Add New Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="all-post.html" class="nav-link"><i class="fas fa-list me-3"></i> All Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/categories.html" class="nav-link active"><i class="fas fa-layer-group me-3"></i> Category Management</a>
+                    </li>
+
+                    <li class="nav-item px-3 mt-4 mb-2">
+                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Settings</small>
+                    </li>
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link"><i class="fas fa-users me-3"></i> Users / Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="setting.html" class="nav-link"><i class="fas fa-cog me-3"></i> Website Setting</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="admin-main flex-grow-1 d-flex flex-column" id="main-content">
+            
+            <header class="admin-topbar bg-white shadow-sm px-4 py-3 d-flex align-items-center justify-content-between sticky-top">
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-light me-3 shadow-none" id="toggleSidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h5 class="m-0 fw-bold d-none d-sm-block text-dark">Categories</h5>
+                </div>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-light position-relative rounded-circle d-flex justify-content-center align-items-center shadow-none" style="width: 40px; height: 40px;">
+                        <i class="far fa-bell fs-5 text-dark"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle" style="margin-top: 5px; margin-left: -5px;"></span>
+                    </button>
+
+                    <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center" style="width: 35px; height: 35px;">A</div>
+                </div>
+            </header>
+
+            <div class="admin-body p-4 p-md-5 flex-grow-1 custom-scrollbar">
+                
+                <div class="mb-4">
+                    <h4 class="fw-bold m-0 text-dark">Category Management</h4>
+                    <p class="text-muted small m-0 mt-1">Add, edit, or remove news categories.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="card bg-white border-0">
+                            <div class="card-body p-4">
+                                <h6 class="fw-bold mb-4">Add New Category</h6>
+                                <form id="categoryForm">
+                                    <input type="hidden" id="catId">
+                                    <div class="mb-3">
+                                        <label class="form-label">Category Name</label>
+                                        <input type="text" id="catName" class="form-control shadow-none" placeholder="e.g. Politics" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Slug (URL)</label>
+                                        <input type="text" id="catSlug" class="form-control shadow-none text-muted" placeholder="e.g. politics" readonly>
+                                        <small class="text-muted" style="font-size: 0.7rem;">It will auto-generate from name.</small>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Description</label>
+                                        <textarea id="catDesc" class="form-control shadow-none" rows="3" placeholder="Short description..."></textarea>
+                                    </div>
+                                    <button type="submit" id="saveBtn" class="btn btn-danger w-100 fw-bold py-2">Add Category</button>
+                                    <button type="button" id="cancelEdit" class="btn btn-light border w-100 mt-2 d-none">Cancel Edit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="card bg-white border-0">
+                            <div class="card-body p-4">
+                                <div class="mb-4">
+                                    <div class="input-group border rounded-3 p-1">
+                                        <span class="input-group-text bg-transparent border-0"><i class="fas fa-search text-muted"></i></span>
+                                        <input type="text" id="catSearch" class="form-control border-0 shadow-none bg-transparent" placeholder="Search categories...">
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table align-middle" id="categoryTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Slug</th>
+                                                <th>Count</th>
+                                                <th class="text-end">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="catTableBody">
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // --- Dummy Data ---
+        let categories = [
+            { id: 1, name: "Entertainment", slug: "entertainment", count: 145 },
+            { id: 2, name: "Politics", slug: "politics", count: 89 },
+            { id: 3, name: "Sports", slug: "sports", count: 230 },
+            { id: 4, name: "Business", slug: "business", count: 56 }
+        ];
+
+        const catTableBody = document.getElementById('catTableBody');
+        const catForm = document.getElementById('categoryForm');
+        const catNameInput = document.getElementById('catName');
+        const catSlugInput = document.getElementById('catSlug');
+        const cancelEdit = document.getElementById('cancelEdit');
+
+        // --- Slug Auto-generation ---
+        catNameInput.addEventListener('input', (e) => {
+            catSlugInput.value = e.target.value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        });
+
+        // --- Render Table ---
+        function renderCategories(filter = '') {
+            catTableBody.innerHTML = '';
+            const filtered = categories.filter(c => c.name.toLowerCase().includes(filter.toLowerCase()));
+
+            filtered.forEach(cat => {
+                catTableBody.innerHTML += `
+                    <tr>
+                        <td><span class="fw-bold text-dark">${cat.name}</span></td>
+                        <td><code class="text-danger small">${cat.slug}</code></td>
+                        <td><span class="badge bg-light text-dark border">${cat.count} Posts</span></td>
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-light border text-primary me-1 hover-success" onclick="editCat(${cat.id})"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-light border text-danger hover-danger" onclick="deleteCat(${cat.id})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // --- Add/Update Logic ---
+        catForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('catId').value;
+            const newCat = {
+                id: id ? parseInt(id) : Date.now(),
+                name: catNameInput.value,
+                slug: catSlugInput.value,
+                count: id ? categories.find(c => c.id === parseInt(id)).count : 0
+            };
+
+            if(id) {
+                const index = categories.findIndex(c => c.id === parseInt(id));
+                categories[index] = newCat;
+                resetForm();
+            } else {
+                categories.unshift(newCat);
+                catForm.reset();
+            }
+            renderCategories();
+        });
+
+        // --- Action Functions ---
+        window.editCat = (id) => {
+            const cat = categories.find(c => c.id === id);
+            document.getElementById('catId').value = cat.id;
+            catNameInput.value = cat.name;
+            catSlugInput.value = cat.slug;
+            document.getElementById('saveBtn').innerText = 'Update Category';
+            cancelEdit.classList.remove('d-none');
+        };
+
+        window.deleteCat = (id) => {
+            if(confirm('Delete this category?')) {
+                categories = categories.filter(c => c.id !== id);
+                renderCategories();
+            }
+        };
+
+        function resetForm() {
+            catForm.reset();
+            document.getElementById('catId').value = '';
+            document.getElementById('saveBtn').innerText = 'Add Category';
+            cancelEdit.classList.add('d-none');
+        }
+
+        cancelEdit.onclick = resetForm;
+        document.getElementById('catSearch').oninput = (e) => renderCategories(e.target.value);
+
+        // --- Init ---
+        renderCategories();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+</html>
