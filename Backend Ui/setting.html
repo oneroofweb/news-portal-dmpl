@@ -124,12 +124,28 @@
                     <button class="btn btn-light me-3 shadow-none" id="toggleSidebar">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <h5 class="m-0 fw-bold d-none d-sm-block text-dark">Website Settings</h5>
+                    <h5 class="m-0 fw-bold d-none d-sm-block text-dark">डैशबोर्ड</h5>
                 </div>
                 
                 <div class="d-flex align-items-center gap-3">
-                    <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center" style="width: 35px; height: 35px;">A</div>
-                    <span class="d-none d-md-block fw-medium">Admin</span>
+                    <button class="btn btn-light position-relative rounded-circle d-flex justify-content-center align-items-center shadow-none" style="width: 40px; height: 40px;">
+                        <i class="far fa-bell fs-5 text-dark"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle" style="margin-top: 5px; margin-left: -5px;"></span>
+                    </button>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle" data-bs-toggle="dropdown">
+                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 35px; height: 35px;">
+                                A
+                            </div>
+                            <span class="d-none d-md-block fw-medium">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="far fa-user me-2"></i> प्रोफाइल</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i> लॉग आउट</a></li>
+                        </ul>
+                    </div>
                 </div>
             </header>
 
