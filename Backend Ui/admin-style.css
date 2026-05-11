@@ -177,3 +177,19 @@ body, html {
 .category-scroll-box::-webkit-scrollbar-track { background: #f1f1f1; }
 .category-scroll-box::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
+/* =========================================
+   MOBILE SIDEBAR RESPONSIVE FIX
+   ========================================= */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        position: fixed !important;
+        left: -260px !important; /* Sidebar default roop se screen ke bahar rahega */
+        z-index: 1050 !important;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2) !important;
+    }
+    
+    .admin-sidebar.active {
+        left: 0 !important; /* Hamburger dabane par andar aayega */
+    }
+}
+
