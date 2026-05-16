@@ -169,63 +169,207 @@
         </div>
     </div>
 
-    <!-- UPDATE MODAL CODE -->
+    <!-- ====== UPDATE MODAL CODE =========== -->
 <div class="modal fade" id="postModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 shadow-lg">
-            <div class="modal-header bg-light border-bottom-0">
-                <h5 class="modal-title fw-bold" id="modalTitle">Write New Post</h5>
+    <!-- Changed to modal-xl for 2-column layout to fit perfectly -->
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 shadow-lg bg-light">
+            
+            <div class="modal-header bg-white border-bottom py-3">
+                <h5 class="modal-title fw-bold text-dark" id="modalTitle">
+                    <i class="fas fa-pen-nib text-danger me-2"></i> Write New Post
+                </h5>
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
             </div>
+            
             <div class="modal-body p-4">
                 <form id="postForm">
                     <input type="hidden" id="postId">
                     
-                    <div class="mb-3">
-                        <label class="form-label fw-medium small">Post Title (Headline) <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control shadow-none" id="postTitle" placeholder="Enter post title..." required>
-                    </div>
+                    <div class="row g-4">
+                        
+                        <!-- LEFT COLUMN (col-lg-8) -->
+                        <div class="col-lg-8">
+                            
+                            <!-- Headline & Permalink Card -->
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-body p-4">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold text-dark">News Headline (Title) <span class="text-danger">*</span></label>
+                                        <input type="text" id="postTitle" class="form-control form-control-lg fs-5 text-dark shadow-none border-secondary-subtle" placeholder="Write an attractive headline here..." required>
+                                        <small class="text-muted mt-1 d-block"> Keep title 60–70 characters for full Google visibility.</small>
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center bg-light p-2 rounded border flex-wrap">
+                                        <span class="text-muted small fw-medium me-2"><i class="fas fa-link"></i> Permalink:</span>
+                                        <span class="text-secondary small">https://dmplnews.com/</span>
+                                        
+                                        <span id="permalink-text" class="text-primary small fw-medium me-2">new-post-url-slug</span>
+                                        <button type="button" id="edit-permalink-btn" class="btn btn-sm btn-light border py-0 px-2 small">Edit</button>
 
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-medium small">Category</label>
-                            <select class="form-select shadow-none" id="postCategory">
-                                <option value="Entertainment">Entertainment</option>
-                                <option value="Business">Business</option>
-                                <option value="Politics">Politics</option>
-                                <option value="Sports">Sports</option>
-                            </select>
+                                        <div id="permalink-edit-div" class="d-none align-items-center">
+                                            <input type="text" id="permalink-input" class="form-control form-control-sm shadow-none p-1 me-2 text-primary" value="new-post-url-slug" style="width: 250px;">
+                                            <button type="button" id="save-permalink-btn" class="btn btn-sm btn-success py-0 px-2 small me-1">OK</button>
+                                            <button type="button" id="cancel-permalink-btn" class="btn btn-sm btn-light text-danger border py-0 px-2 small">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Article Body Card -->
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-bottom py-3">
+                                    <h6 class="fw-bold m-0 text-dark">Write Article (Article Body)</h6>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="bg-light border-bottom p-2 d-flex gap-2">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary border-0"><i class="fas fa-bold"></i></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary border-0"><i class="fas fa-italic"></i></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary border-0"><i class="fas fa-link"></i></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary border-0"><i class="fas fa-image"></i></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary border-0"><i class="fas fa-list-ul"></i></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary border-0"><i class="fas fa-heading"></i></button>
+                                    </div>
+                                    <textarea id="postContent" class="form-control border-0 shadow-none p-4" rows="10" placeholder="Start writing the article here... (CKEditor/TinyMCE)" required></textarea>
+                                </div>
+                            </div>
+
+                            <!-- SEO Card -->
+                            <div class="card border-0 shadow-sm border-top border-primary border-4 mb-4 mb-lg-0">
+                                <div class="card-header bg-white border-bottom py-3 d-flex align-items-center">
+                                    <h6 class="fw-bold m-0 text-dark">
+                                        <i class="fab fa-google text-primary me-2"></i> SEO Setting (Search Engine Optimization)
+                                    </h6>
+                                </div>
+                                <div class="card-body p-4 bg-light bg-opacity-50">
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold text-dark">Focus Keyword</label>
+                                        <input type="text" class="form-control shadow-none border-secondary-subtle" placeholder="Ex: Jawan 2, Shahrukh Khan">
+                                        <small class="text-muted">Main keyword that people will search for on Google.</small>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <label class="form-label fw-bold text-dark m-0">SEO Title (Meta Title)</label>
+                                            <small class="text-muted">0/60</small>
+                                        </div>
+                                        <input type="text" class="form-control shadow-none border-secondary-subtle" placeholder="If left empty, the main headline will be used.">
+                                        <div class="progress mt-2" style="height: 4px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-0">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <label class="form-label fw-bold text-dark m-0">Meta Description</label>
+                                            <small class="text-muted">0/160</small>
+                                        </div>
+                                        <textarea class="form-control shadow-none border-secondary-subtle" rows="3" placeholder="Write a 2–3 line summary that will appear in Google search..."></textarea>
+                                        <div class="progress mt-2" style="height: 4px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-medium small">Status</label>
-                            <select class="form-select shadow-none" id="postStatus">
-                                <option value="Published">Published</option>
-                                <option value="Draft">Draft</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <!-- NEW: Featured Image -->
-                    <div class="mb-3">
-                        <label class="form-label fw-medium small">Featured Image</label>
-                        <input type="file" class="form-control shadow-none" id="postImage" accept="image/*">
-                    </div>
-
-                    <!-- NEW: Post Content Area -->
-                    <div class="mb-3">
-                        <label class="form-label fw-medium small">Post Content <span class="text-danger">*</span></label>
-                        <textarea class="form-control shadow-none" id="postContent" rows="6" placeholder="Write your news content here..." required></textarea>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="form-label fw-medium small">Author Name</label>
-                        <input type="text" class="form-control shadow-none" id="postAuthor" placeholder="e.g. John Doe" required>
-                    </div>
+                        
+                        <!-- RIGHT COLUMN (col-lg-4) -->
+                        <div class="col-lg-4">
+                            
+                            <!-- Publish Card -->
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-bottom py-3">
+                                    <h6 class="fw-bold m-0 text-dark">Publish</h6>
+                                </div>
+                                <div class="card-body p-3">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm fw-medium" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm fw-medium">Save Draft</button>
+                                    </div>
+                                    <div class="mb-3 small text-dark">
+                                        <i class="fas fa-key text-muted me-2"></i> Status: <strong>Draft</strong>
+                                    </div>
+                                    <div class="mb-4 small text-dark">
+                                        <i class="fas fa-calendar-alt text-muted me-2"></i> Publish Date: <strong>Immediately</strong>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger w-100 fw-bold shadow-sm py-2">
+                                        <i class="fas fa-paper-plane me-2"></i> Publish News
+                                    </button>
+                                </div>
+                            </div>
                     
-                    <div class="d-flex gap-2 justify-content-end border-top pt-3">
-                        <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger fw-bold px-4">Save Post</button>
+                            <!-- Choose City Card -->
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-bottom py-3">
+                                    <h6 class="fw-bold m-0 text-dark">Choose City (शहर चुनें)</h6>
+                                </div>
+                                <div class="card-body p-3">
+                                    <label class="form-label fw-medium small text-muted mb-2">Select a city from the list:</label>
+                                    <select class="form-select shadow-none border-secondary-subtle" id="postCity">
+                                        <option value="">Select City</option>
+                                        <option value="Lucknow">Lucknow</option>
+                                        <option value="Basti">Basti</option>
+                                        <option value="Gorakhpur">Gorakhpur</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Choose Category Card -->
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-bottom py-3">
+                                    <h6 class="fw-bold m-0 text-dark">Choose Category</h6>
+                                </div>
+                                <div class="card-body p-3 category-scroll-box custom-scrollbar" style="max-height: 200px; overflow-y: auto;">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="cat1">
+                                        <label class="form-check-label text-dark" for="cat1">देश</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="cat2">
+                                        <label class="form-check-label text-dark" for="cat2">मनोरंजन</label>
+                                    </div>
+                                    <div class="form-check mb-2 ms-3"> 
+                                        <input class="form-check-input" type="checkbox" id="cat3" checked>
+                                        <label class="form-check-label text-dark" for="cat3">बॉलीवुड</label>
+                                    </div>
+                                    <div class="form-check mb-2 ms-3">
+                                        <input class="form-check-input" type="checkbox" id="cat4">
+                                        <label class="form-check-label text-dark" for="cat4">हॉलीवुड</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="cat5">
+                                        <label class="form-check-label text-dark" for="cat5">बिज़नेस</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Featured Image Card -->
+                            <div class="card border-0 shadow-sm mb-0">
+                                <div class="card-header bg-white border-bottom py-3">
+                                    <h6 class="fw-bold m-0 text-dark">Featured Image</h6>
+                                </div>
+                                <div class="card-body p-3 text-center">
+                                    <input type="file" id="featured-image-input" class="d-none" accept="image/*">
+                                    
+                                    <div id="featured-image-box" class="border border-2 border-dashed rounded bg-light mb-2 cursor-pointer featured-img-box position-relative overflow-hidden d-flex justify-content-center align-items-center" style="min-height: 160px; padding: 2rem;" onclick="document.getElementById('featured-image-input').click();">
+                                        <div id="upload-placeholder">
+                                            <i class="fas fa-cloud-upload-alt fa-3x text-secondary mb-2"></i>
+                                            <p class="text-muted small m-0">Click Here to Upload Pic<br>(Size: 800x450px)</p>
+                                        </div>
+                                        <img id="image-preview" src="" alt="Preview" class="d-none position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
+                                    </div>
+
+                                    <button type="button" id="remove-image-btn" class="btn btn-sm btn-outline-danger d-none w-100 mb-3"><i class="fas fa-trash-alt me-1"></i> फोटो हटाएं</button>
+                                    
+                                    <div class="text-start pt-3 border-top">
+                                        <label class="form-label small fw-bold text-dark">Image Alt Text (SEO)</label>
+                                        <input type="text" class="form-control form-control-sm shadow-none" placeholder="Add Alt Text (Ex: Jawan 2 poster)">
+                                        <small class="text-muted d-block mt-1" style="font-size: 0.7rem;">For Ranking in Google Image Search</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </form>
             </div>
