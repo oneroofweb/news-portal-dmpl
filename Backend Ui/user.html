@@ -81,35 +81,18 @@
             
             <div class="sidebar-menu py-3 custom-scrollbar">
                 <ul class="nav flex-column">
-                    <li class="nav-item px-3 mb-2">
-                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Main</small>
-                    </li>
-                    <li class="nav-item">
-                        <a href="admin.html" class="nav-link"><i class="fas fa-tachometer-alt me-3"></i> Dashboard</a>
-                    </li>
+                    <li class="nav-item px-3 mb-2"><small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Main</small></li>
+                    <li class="nav-item"><a href="admin.html" class="nav-link"><i class="fas fa-tachometer-alt me-3"></i> Dashboard</a></li>
                     
-                    <li class="nav-item px-3 mt-4 mb-2">
-                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Content</small>
-                    </li>
-                    <li class="nav-item">
-                        <a href="add-new-post.html" class="nav-link"><i class="fas fa-pen-nib me-3"></i> Add New Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="all-post.html" class="nav-link"><i class="fas fa-list me-3"></i> All Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="categories.html" class="nav-link"><i class="fas fa-layer-group me-3"></i> Category Management</a>
-                    </li>
+                    <li class="nav-item px-3 mt-4 mb-2"><small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Content</small></li>
+                    <li class="nav-item"><a href="add-new-post.html" class="nav-link"><i class="fas fa-pen-nib me-3"></i> Add New Post</a></li>
+                    <li class="nav-item"><a href="all-post.html" class="nav-link"><i class="fas fa-list me-3"></i> All Posts</a></li>
+                    <li class="nav-item"><a href="categories.html" class="nav-link"><i class="fas fa-layer-group me-3"></i> Category Management</a></li>
+                    <li class="nav-item"><a href="admin-cities.html" class="nav-link"><i class="fas fa-city me-3"></i> City Management</a></li>
 
-                    <li class="nav-item px-3 mt-4 mb-2">
-                        <small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Settings</small>
-                    </li>
-                    <li class="nav-item">
-                        <a href="user.html" class="nav-link active"><i class="fas fa-users me-3"></i> Users / Staff</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="setting.html" class="nav-link"><i class="fas fa-cog me-3"></i> Website Setting</a>
-                    </li>
+                    <li class="nav-item px-3 mt-4 mb-2"><small class="text-uppercase text-secondary fw-bold" style="font-size: 0.75rem;">Settings</small></li>
+                    <li class="nav-item"><a href="user.html" class="nav-link active"><i class="fas fa-users me-3"></i> Users / Staff</a></li>
+                    <li class="nav-item"><a href="setting.html" class="nav-link"><i class="fas fa-cog me-3"></i> Website Setting</a></li>
                 </ul>
             </div>
         </aside>
@@ -121,7 +104,7 @@
                     <button class="btn btn-light me-3 shadow-none" id="toggleSidebar">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <h5 class="m-0 fw-bold d-none d-sm-block text-dark">डैशबोर्ड</h5>
+                    <h5 class="m-0 fw-bold d-none d-sm-block text-dark">User Management</h5>
                 </div>
                 
                 <div class="d-flex align-items-center gap-3">
@@ -132,9 +115,7 @@
                     
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle" data-bs-toggle="dropdown">
-                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 35px; height: 35px;">
-                                A
-                            </div>
+                            <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 35px; height: 35px;">A</div>
                             <span class="d-none d-md-block fw-medium">Admin</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
@@ -151,7 +132,7 @@
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
                     <div>
                         <h4 class="fw-bold m-0 text-dark">User Management</h4>
-                        <p class="text-muted small m-0 mt-1">Manage staff roles and website users.</p>
+                        <p class="text-muted small m-0 mt-1">Manage staff roles, cities and website users.</p>
                     </div>
                     <button class="btn btn-danger shadow-sm fw-medium px-4" data-bs-toggle="modal" data-bs-target="#userModal" onclick="resetForm()">
                         <i class="fas fa-user-plus me-2"></i> Add New User
@@ -161,12 +142,23 @@
                 <div class="card bg-white border-0">
                     <div class="card-body p-4">
                         
+                        <!-- UPDATED FILTER SECTION WITH CITY FILTER -->
                         <div class="row mb-4 g-3">
-                            <div class="col-lg-6 col-md-12">
+                            <div class="col-lg-3 col-md-6">
                                 <div class="input-group border rounded-3 p-1 h-100 bg-light bg-opacity-50">
                                     <span class="input-group-text bg-transparent border-0"><i class="fas fa-search text-muted"></i></span>
-                                    <input type="text" id="userSearch" class="form-control border-0 shadow-none bg-transparent" placeholder="Search by name or email...">
+                                    <input type="text" id="userSearch" class="form-control border-0 shadow-none bg-transparent" placeholder="Search user...">
                                 </div>
+                            </div>
+                            <!-- NEW CITY FILTER -->
+                            <div class="col-lg-3 col-md-6">
+                                <select id="filterCity" class="form-select border rounded-3 shadow-none p-2 text-muted fw-medium bg-light bg-opacity-50 h-100">
+                                    <option value="All">All Locations (सभी शहर)</option>
+                                    <option value="All Cities">Head Office (All Cities)</option>
+                                    <option value="Lucknow">Lucknow</option>
+                                    <option value="Basti">Basti</option>
+                                    <option value="Gorakhpur">Gorakhpur</option>
+                                </select>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <select id="filterRole" class="form-select border rounded-3 shadow-none p-2 text-muted fw-medium bg-light bg-opacity-50 h-100">
@@ -184,6 +176,7 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- END UPDATED FILTER SECTION -->
 
                         <div class="table-responsive">
                             <table class="table align-middle" id="userTable">
@@ -191,6 +184,7 @@
                                     <tr>
                                         <th>User Details</th>
                                         <th>Role</th>
+                                        <th>City</th> 
                                         <th>Status</th>
                                         <th>Joined Date</th>
                                         <th class="text-end">Actions</th>
@@ -207,6 +201,7 @@
         </div>
     </div>
 
+    <!-- ADD/EDIT USER MODAL -->
     <div class="modal fade" id="userModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
@@ -217,14 +212,31 @@
                 <div class="modal-body p-4">
                     <form id="userForm">
                         <input type="hidden" id="userId">
+                        
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Full Name</label>
+                            <label class="form-label small fw-bold">Full Name <span class="text-danger">*</span></label>
                             <input type="text" id="userName" class="form-control shadow-none" required placeholder="Enter full name">
                         </div>
+                        
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Email Address</label>
+                            <label class="form-label small fw-bold">Email Address <span class="text-danger">*</span></label>
                             <input type="email" id="userEmail" class="form-control shadow-none" required placeholder="email@example.com">
                         </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Assign City <span class="text-danger">*</span></label>
+                            <select id="userCity" class="form-select shadow-none border-secondary-subtle" required>
+                                <option value="">Select City</option>
+                                <option value="All Cities">All Cities (Head Office/Admin)</option>
+                                <option value="Lucknow">Lucknow</option>
+                                <option value="Basti">Basti</option>
+                                <option value="Gorakhpur">Gorakhpur</option>
+                            </select>
+                            <div class="form-text mt-1" style="font-size: 0.75rem;">
+                                * For reporters, assign a specific city. For Admins, select 'All Cities'.
+                            </div>
+                        </div>
+                        
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold">Role</label>
@@ -242,6 +254,7 @@
                                 </select>
                             </div>
                         </div>
+                        
                         <button type="submit" class="btn btn-danger w-100 fw-bold py-2">Save User Details</button>
                     </form>
                 </div>
@@ -251,9 +264,9 @@
 
     <script>
         let users = [
-            { id: 1, name: "Atharva", email: "atharva@oneroof.com", role: "Admin", status: "Active", date: "12 Oct 2025" },
-            { id: 2, name: "Rahul Sharma", email: "rahul@dmpl.com", role: "Editor", status: "Active", date: "15 Nov 2025" },
-            { id: 3, name: "Priya Gupta", email: "priya@dmpl.com", role: "Author", status: "Inactive", date: "02 Feb 2026" }
+            { id: 1, name: "Atharva", email: "atharva@oneroof.com", role: "Admin", city: "All Cities", status: "Active", date: "12 Oct 2025" },
+            { id: 2, name: "Rahul Sharma", email: "rahul@dmpl.com", role: "Editor", city: "Lucknow", status: "Active", date: "15 Nov 2025" },
+            { id: 3, name: "Priya Gupta", email: "priya@dmpl.com", role: "Author", city: "Basti", status: "Inactive", date: "02 Feb 2026" }
         ];
 
         const userTableBody = document.getElementById('userTableBody');
@@ -263,12 +276,15 @@
             const searchTerm = document.getElementById('userSearch').value.toLowerCase();
             const roleTerm = document.getElementById('filterRole').value;
             const statusTerm = document.getElementById('filterStatus').value;
+            const cityTerm = document.getElementById('filterCity').value; // Get City Filter Value
 
             const filtered = users.filter(u => {
                 const matchSearch = u.name.toLowerCase().includes(searchTerm) || u.email.toLowerCase().includes(searchTerm);
                 const matchRole = roleTerm === 'All' || u.role === roleTerm;
                 const matchStatus = statusTerm === 'All' || u.status === statusTerm;
-                return matchSearch && matchRole && matchStatus;
+                const matchCity = cityTerm === 'All' || u.city === cityTerm; // Match City Logic
+                
+                return matchSearch && matchRole && matchStatus && matchCity;
             });
             renderUsers(filtered);
         }
@@ -276,7 +292,7 @@
         function renderUsers(dataToRender = users) {
             userTableBody.innerHTML = '';
             if(dataToRender.length === 0) {
-                userTableBody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-5">No matching users found!</td></tr>`;
+                userTableBody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-5">No matching users found!</td></tr>`;
                 return;
             }
             dataToRender.forEach(u => {
@@ -290,6 +306,7 @@
                             </div>
                         </td>
                         <td><span class="badge bg-light text-dark border">${u.role}</span></td>
+                        <td><span class="text-muted small fw-medium"><i class="fas fa-map-marker-alt me-1 text-danger"></i> ${u.city}</span></td>
                         <td><span class="badge ${statusClass} border border-opacity-25 px-2 py-1">${u.status}</span></td>
                         <td class="small text-muted">${u.date}</td>
                         <td class="text-end">
@@ -308,6 +325,7 @@
                 id: id ? parseInt(id) : Date.now(),
                 name: document.getElementById('userName').value,
                 email: document.getElementById('userEmail').value,
+                city: document.getElementById('userCity').value,
                 role: document.getElementById('userRole').value,
                 status: document.getElementById('userStatus').value,
                 date: id ? users.find(u => u.id === parseInt(id)).date : "Just Now"
@@ -327,6 +345,7 @@
             document.getElementById('userId').value = u.id;
             document.getElementById('userName').value = u.name;
             document.getElementById('userEmail').value = u.email;
+            document.getElementById('userCity').value = u.city; 
             document.getElementById('userRole').value = u.role;
             document.getElementById('userStatus').value = u.status;
             document.getElementById('userModalLabel').innerText = 'Edit User Details';
@@ -346,9 +365,12 @@
             document.getElementById('userModalLabel').innerText = 'Add New User';
         };
 
+        // Event Listeners for Filters
         document.getElementById('userSearch').addEventListener('input', applyFilters);
+        document.getElementById('filterCity').addEventListener('change', applyFilters); // Added Listener
         document.getElementById('filterRole').addEventListener('change', applyFilters);
         document.getElementById('filterStatus').addEventListener('change', applyFilters);
+        
         renderUsers();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
